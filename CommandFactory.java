@@ -6,7 +6,7 @@
 package borkv3;
 
 /**
- *
+ * this class creates a command factory object relative to the command that is put in
  * @author qureshi225
  */
 public class CommandFactory {
@@ -16,14 +16,21 @@ public class CommandFactory {
     private CommandFactory() {
 
     }
-
+    /**
+     * @return creates an instance of the command factory if one hasn't been created yet
+     */
     public static synchronized CommandFactory getInstance() {
         if (onlyInstance == null) {
             onlyInstance = new CommandFactory();
         }
         return onlyInstance;
     }
-
+    /**
+     * 
+     * @param commandString
+     * @return prints a string to the screen that tells what you did or where you went
+     * based off of the command that you input to the system.
+     */
     public Command parse(String commandString) {
         Command toDo;
         String[] split= commandString.split(" ");
