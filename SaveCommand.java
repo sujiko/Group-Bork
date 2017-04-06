@@ -13,10 +13,17 @@ import java.util.Scanner;
  */
 public class SaveCommand extends Command {
     String saveFilename;
-    
+    /**
+     * assigns the name  of the file to the variable saveFilename
+     * @param f 
+     */
     public SaveCommand(String f){
         saveFilename=f;
     }
+    /**
+     * when run this command saves the game to the file named in the variable saveFilename.
+     * @return returns a message letting you know your game has been saved
+     */
     public String execute() {
         GameState state = GameState.Instance();
         Scanner in = new Scanner(System.in);
