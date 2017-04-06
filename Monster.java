@@ -31,7 +31,7 @@ public class Monster {
         this.life = health;
     }
     /**
-     * when the monster attacks this method will calculate how much damage you take;
+     * when the monster attacks this method will calculate how much damage you take
      * @return a string telling you how much damage you took
      */
     public String MonAttack(){
