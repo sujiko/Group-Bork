@@ -38,18 +38,39 @@ public class Exit {
     this.src=src;
     this.dest=dest;
    }
+   /**
+   * sets the descriptor for an exit 
+   *@param desc
+   *          String that is what the user wants to input as the description for the exit. 
+   */
    public void setDescription(String desc){
     this.description=desc;
    }
+   /**
+   *gets the description that was set for an exit
+   *@return the string desccription
+   */
    public String getDescription(){
        return description;
    }
+   /**
+   *gets the direction the exit is in
+   *@return the string of the direction
+   */
    public String getDir(){
        return dir;
    }
+   /**
+   *gets the starting room
+   *@return the room you started in
+   */
    public Room getSrc(){
        return src;
    }
+   /** 
+   *gets the destination room
+   *@return the room the exit leads to
+   */
    public Room getDest(){
        return dest;
    }
