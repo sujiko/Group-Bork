@@ -6,14 +6,24 @@
 package borkv3;
 
 /**
- *
+ * DropCommand is an extension of the Command class and specializes in dropping an item in your inventory
  * @author qureshi225
+ * @throws a NoItemException
  */
 public class DropCommand extends Command {
     String itemName;
+    /**
+     * DropCommand takes in the itemName and assigns it to the variable itemName
+     * @param itemName 
+     */
     public DropCommand(String itemName){
         this.itemName=itemName;
     }
+    /**
+     * @return a String that tells you whether you dropped the item or if you
+     * had it in your inventory
+     * @throws NoItemException
+     */
     public String execute(){
         if(itemName.equals("")){
             return"Drop what?";
