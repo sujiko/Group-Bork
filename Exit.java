@@ -16,6 +16,13 @@ public class Exit {
    private Room src;
    private Room dest;
    private String description;
+   private boolean locked;
+   
+   /**
+    * exit constructor from file
+    * add whether or not an exit is locked and what the unlock condition is
+    * @param BufferedReader buffer, Dungeon dungeon
+    */
    public Exit(BufferedReader buffer, Dungeon dungeon){
         try{
         String currentLine="";
@@ -33,6 +40,11 @@ public class Exit {
        
    }
    }
+   
+   /**
+    * exit constructor from given values
+    * @param String dir, Room src, Room dest
+    */
    public Exit(String dir, Room src, Room dest){
     this.dir=dir;
     this.src=src;
@@ -73,5 +85,13 @@ public class Exit {
    */
    public Room getDest(){
        return dest;
+   }
+   /**
+    * unlocks exit
+    *
+    */
+   public void unlock()
+   {
+      this.locked = false;
    }
 }
