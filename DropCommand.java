@@ -8,7 +8,6 @@ package borkv3;
 /**
  * DropCommand is an extension of the Command class and specializes in dropping an item in your inventory
  * @author qureshi225
- * @throws a NoItemException
  */
 public class DropCommand extends Command {
     String itemName;
