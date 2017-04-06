@@ -8,7 +8,6 @@ package borkv3;
 /**
  * TakeCommand is an Extension of the Command class and specializes on adding items to your inventory
  * @author qureshi225
- * @throws NoItemException
  */
 public class TakeCommand extends Command {
     String itemName;
