@@ -22,7 +22,6 @@ public class TakeCommand extends Command {
     /**
      * @return a string that tells you if you have taken the item or
      * if it isn't in the room
-     * @throws NoItemException
      */
     public String execute(){
         if(itemName.equals("")){
