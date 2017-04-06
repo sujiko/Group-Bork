@@ -6,16 +6,21 @@
 package borkv3;
 
 /**
- *
+ * this class allows you to move to different rooms if possible
  * @author qureshi225
  */
 public class MovementCommand extends Command {
     String dir;
-
+    /**
+     * assigns the direction you want to go to the variable dir
+     * @param dir 
+     */
     public MovementCommand(String dir) {
         this.dir = dir;
     }
-
+    /**
+     * @return returns a message telling you what room you are in if you could move in that direction
+     */
     public String execute() {
         GameState state = GameState.Instance();
         Room current = state.getAdvenurersCurrentRoom();
