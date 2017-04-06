@@ -6,7 +6,7 @@
 package borkv3;
 
 /**
- *
+ *takes user input and helps parse and output it.
  * @author qureshi225
  */
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import static java.lang.System.out;
 public class Interpreter {
 
     /**
-     * @param args the command line arguments
+     * the main takes care of the messages outputted to the user and taking in input from the user.
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -49,7 +49,12 @@ public class Interpreter {
         }
             
     }
-
+/**
+*this method is what prompts the user for their input and then returns it to main.
+*@param input
+*           the method takes in a scanner so that it may communicate with the user
+*@return the string the user inputted for parsing.
+*/
     private static String promptUser(Scanner input) {
         boolean haveTheyQuit = false;
         while (!haveTheyQuit) {
