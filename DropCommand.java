@@ -22,7 +22,6 @@ public class DropCommand extends Command {
     /**
      * @return a String that tells you whether you dropped the item or if you
      * had it in your inventory
-     * @throws NoItemException
      */
     public String execute(){
         if(itemName.equals("")){
