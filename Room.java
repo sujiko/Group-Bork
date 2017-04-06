@@ -101,7 +101,8 @@ public class Room {
     }
 
     /**
-    * Checks if leaving in a given direction is possible
+    * Checks if leaving in a given direction is possible, and if it is possible, returns the new room
+    * If a direction cannot be moved in, prints whether there is an exit that needs to be unlocked
     * @param String dir
     */
     public Room leaveBy(String dir) {
