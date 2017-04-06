@@ -14,7 +14,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- *
+ *The Class Dungeon creates an instance of a dungeon for gamestate, but also 
+ *handles the creation of a dungeon from a .bork or .save file.
  * @author qureshi225
  */
 public class Dungeon {
@@ -92,22 +93,42 @@ public class Dungeon {
         this.entry = entry;
         this.name = name;
     }
-
+/**
+*Gets the Entry to the dungeon.
+*@return the room that is the entry
+*/
     public Room getEntry() {
         return entry;
     }
-
+/**
+*Gets the Name of the dungeon.
+*@return the String name of the dungeon
+*/
     public String getName() {
         return name;
     }
-
+/**
+*adds a room to the dungeons hashtable so that the dungeon may use it.
+*@param room
+*        the room you are adding to the hashtable.
+*/
     public void add(Room room) {
         rooms.put(room.getTitle(), room);
     }
-
+/**
+* this gets the room attached to the String title from the hashtable.
+*@param roomTitle
+*         the room to find
+*@return the room from the hashtable
+*/
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
+    /**
+    *writes to the save
+    *@param writer
+    *         the buffered writer being passed from gamestate.
+    */
     public void storeState(BufferedWriter writer){
         try{
         writer.write("Save Data\n");
@@ -122,6 +143,12 @@ public class Dungeon {
         }
 
     }
+    /**
+    *reads from the save state to properly create the game back up to the proper point
+    *@param buffer
+    *           is passed from gamestate to read the file
+    *
+    */
     public void restoreState(BufferedReader buffer){
         try{
             
@@ -149,9 +176,20 @@ public class Dungeon {
             System.exit(54);
         }
     }
+/**
+*adds the item to the items hashtable
+*@param item
+*           adds the item to the hashtable
+*/
     public void addItem(Item item){
         items.put(item.getPrimaryName(),item);
     }
+    /**
+    *gets the item connected to the string to the hashtable
+    *@param primaryName
+    *           the name of the item to get
+    *@return the item from the hashtable
+    */
     public Item getItem(String primaryName){
         return items.get(primaryName);
     }
