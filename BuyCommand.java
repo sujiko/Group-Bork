@@ -19,6 +19,6 @@ public class BuyCommand extends Command {
     *@return the string output to the player.
     */
     public String execute(){
-       return ""
+       return "";
      }
 }
