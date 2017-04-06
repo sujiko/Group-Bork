@@ -11,4 +11,24 @@ package borkv3;
  */
 public class Follower {
 
+  /** 
+  * gives the current health of the follower
+  *@return returns the current health of the follower as a int. 
+  */
+  public int getHealth(){
+    return this.health;
+  }
+  /**
+  * this method is to heal the follower
+  *param i
+  *       the int that the follower will heal by
+  */
+  
+  /**
+  *this method is to damage the follower
+  *param i
+  *        thhe int the follower will take damage by
+  */
+  
+  
 }

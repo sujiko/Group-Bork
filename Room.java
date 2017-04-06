@@ -11,7 +11,7 @@ import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
 /**
- *
+ * Creates and manages Room objects
  * @author qureshi225
  */
 public class Room {
@@ -22,6 +22,10 @@ public class Room {
     private ArrayList<Exit> exitsTo = new ArrayList<Exit>();
     private ArrayList<Item> containingItems = new ArrayList<Item>();
 
+    /**
+    * Constructor for Room
+    * @param BufferedReader buffer, Dungeon dungeon, boolean initState
+    */
     public Room(BufferedReader buffer, Dungeon dungeon, boolean initState) {
         try {
             String currentLine = buffer.readLine();
@@ -49,20 +53,36 @@ public class Room {
 
         }
     }
-
+    
+    /**
+    * Alternate constructor for Room
+    * @param String title
+    */
     public Room(String title) {
         this.title = title;
         beenHere = false;
     }
 
+    /**
+    * Getter method for the name of the room
+    * @return String title (name of room)
+    */
     public String getTitle() {
         return title;
     }
 
+    /**
+    * Setter method for the room's description
+    * @param String desc 
+    */
     public void setDesc(String desc) {
         this.desc += desc;
     }
 
+    /**
+    * Prints the full description of the Room if the player has not been in the room previously
+    * If the user has been to the room before, prints only the title
+    */
     public String describe() {
         String fullDescription = "";
         for (int i = 0; i < exitsTo.size(); i++) {
@@ -80,6 +100,10 @@ public class Room {
         }
     }
 
+    /**
+    * Checks if leaving in a given direction is possible
+    * @param String dir
+    */
     public Room leaveBy(String dir) {
         for (int i = 0; i < exitsTo.size(); i++) {
             Exit getExit = exitsTo.get(i);
@@ -91,11 +115,19 @@ public class Room {
         return null;
     }
 
+    /**
+    * Adds given exits to the ArrayList of exits for the given room
+    * @param Exit exit
+    */
     public void addExit(Exit exit) {
         exitsTo.add(exit);
 
     }
 
+    /**
+    * Saves the current state of the room
+    * @param BufferedWriter writer
+    */
     public void storeState(BufferedWriter writer) {
         try {
             if (beenHere) {
@@ -128,6 +160,10 @@ public class Room {
         }
     }
 
+    /**
+    * Restores the previous state of the room
+    * @param BufferedReader buffer, Dungeon dungeon
+    */
     public void restoreState(BufferedReader buffer, Dungeon dungeon) {
         try {
             String line = buffer.readLine();
@@ -151,14 +187,26 @@ public class Room {
         }
     }
 
+    /**
+    * Adds an item to the ArrayList of items that the room contains
+    * @param Item i
+    */
     public void add(Item i) {
         containingItems.add(i);
     }
 
+    /**
+    * Removes an item from the room and from the item ArrayList
+    * @param Item i
+    */
     public void remove(Item i) {
         containingItems.remove(i);
     }
 
+    /**
+    * Searches for an item by name in the items list and returns it if it contains that item
+    * @param String n
+    */
     public Item getItemNamed(String n) {
         for (Item i : containingItems) {
             if (i.getPrimaryName().equals(n)) {
