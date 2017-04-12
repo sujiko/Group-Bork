@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package borkv3;
+package group.bork;
 
 /**
  * this class creates a command factory object relative to the command that is put in

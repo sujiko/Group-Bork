@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package borkv3;
+package group.bork;
 
 /**
  *Euip equips an item to the player, for use in combat.
@@ -27,13 +27,14 @@ public class EquipCommand extends Command {
         GameState  state= GameState.Instance();
         if(state.getItemFromInventoryNamed(itemName)!= null){
             return "You equipped the "+itemName;
-        }/*else if(state.getItemInVicinityNamed(itemName)!= null){
+        /*else if(state.getItemInVicinityNamed(itemName)!= null){
         state.addToInventory(state.getItemInVicinityNamed(itemName));
         return itemName+" taken.";
+*/
         }else{
             return "There is no "+itemName+" here.";
         }
-        */
+        
         }catch (Exception e){
         return "You cannot take that!";
         }

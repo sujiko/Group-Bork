@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package borkv3;
+package group.bork;
 
 /**
  *the price command will allow a player to see the price of an item in  a shopkeepers inventory
@@ -19,6 +19,6 @@ public class PriceCommand extends Command {
     *@return the string output to the player.
     */
     public String execute(){
-       return ""
+       return "";
      }
 }

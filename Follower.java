@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package borkv3;
+package group.bork;
 
 /**
  *this class holds a follower if there is one for the bork game.
  * @author qureshi225
  */
 public class Follower {
+    private int health;
 
   /** 
   * gives the current health of the follower

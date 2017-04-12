@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package groupborkv1.Group-Bork;
+package group.bork;
+       
 
 /**
  * the attack command will allow the player to attack monsters

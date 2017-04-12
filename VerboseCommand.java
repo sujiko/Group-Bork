@@ -5,18 +5,14 @@
  */
 package group.bork;
 
-
 /**
- * @param nothing
- * @return a string from the execute command
- * @throws nothing
+ *verbose command will make it so the user can continually get a description
+ *of the room from bork
  * @author qureshi225
  */
-abstract class Command {
-    /**
-     * 
-     * @return a string describing what you did or where you went
-     */
-    abstract String execute();
+public class VerboseCommand extends Command {
+    
+    public String execute(){
+        return "";
+    }
 }
-
