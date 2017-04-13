@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
 /**
  *verbose command will make it so the user can continually get a description

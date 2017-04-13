@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
 /**
  * returns a message that lets you know that the system doesn't understand your command

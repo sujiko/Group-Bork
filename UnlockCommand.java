@@ -1,4 +1,4 @@
-package group.bork;
+package GroupBork;
 
    /**
     * the unlock command will allow the player to open a previously inaccessible exit if they meet the correct conditions

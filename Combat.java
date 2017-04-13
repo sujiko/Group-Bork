@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
 /**
  *this class will handle calculating how much damage you, your follower, and monsters will take

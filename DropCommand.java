@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
 /**
  * DropCommand is an extension of the Command class and specializes in dropping an item in your inventory

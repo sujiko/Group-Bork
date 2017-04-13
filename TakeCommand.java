@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
 /**
  * TakeCommand is an Extension of the Command class and specializes on adding items to your inventory

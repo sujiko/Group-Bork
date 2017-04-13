@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group.bork;
+package GroupBork;
 
-import group.bork.Room;
 import java.util.Hashtable;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
