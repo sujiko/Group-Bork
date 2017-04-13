@@ -77,7 +77,7 @@ public class Item {
                if(commandWithNumber.length==2){
                    String number=commandWithNumber[1].substring(0, commandWithNumber[1].length()-1);
                    int topass= Integer.valueOf(number);
-                   Command commands= new Command(commandWithNumber[0])
+                   
               commands.execute();
                }
                
