@@ -17,24 +17,32 @@ import java.util.Set;
 public class Item {
 
     private String primaryName;
-    private int weight;
+    private int score;
     private Hashtable<String, String> messages = new Hashtable<String, String>();
+    private Hashtable<String,String[]> extraCommands = new Hashtable<String,String[]>();
 
     public Item(BufferedReader buffer) {
         try {
             String currentLine = buffer.readLine();
             primaryName = currentLine;
-            weight = Integer.parseInt(buffer.readLine());
+            score = Integer.parseInt(buffer.readLine());
             currentLine = buffer.readLine();
             while (!currentLine.equals("---")) {
                 String[] split = currentLine.split(":");
-                messages.put(split[0], split[1]);
+                String[] extra= split[0].split("[");
+                if(extra.length==2){
+                    String commandsString=extra[1].substring(0,extra[1].length()-2);
+                    String[] commands= commandsString.split(",");
+                    extraCommands.put(extra[0],commands);
+                }
+                messages.put(extra[0], split[1]);
                 currentLine = buffer.readLine();
             }
             buffer.mark(1);
 
         } catch (Exception e) {
-
+            System.out.println("This file isn't formatted correctly!!!!");
+            System.exit(54);
         }
     }
 /**
@@ -54,16 +62,33 @@ public class Item {
         return primaryName;
     }
 /**
-*this gets the message based on the verb contained int he hashtable
+*this gets the message based on the verb contained int he hashtable and calls on the any extra commands
+* the verb 
 *@param verb
 *           the verb given to search for the message of
 *@return the messaged connected to the verb
 */
     public String getMessageForVerb(String verb) {
+         CommandFactory in = CommandFactory.getInstance();
+        if(extraCommands.containsKey(verb)){
+           for (int i=0;i< extraCommands.get(verb).length;i++){
+               String todo=extraCommands.get(verb)[i];
+               String[] commandWithNumber= todo.split("(");
+               if(commandWithNumber.length==2){
+                   String number=commandWithNumber[1].substring(0, commandWithNumber[1].length()-1);
+                   int topass= Integer.valueOf(number);
+                   Command commands= new Command(commandWithNumber[0])
+              commands.execute();
+               }
+               
+              Command commands= in.parse(todo);
+              commands.execute();
+           }
+        }
         return messages.getOrDefault(verb, null);
     }
 /**
-*gives the interget weight of the item(the so called score)
+*gives the integer weight of the item(the so called score)
 *@return the weight of the object
 */
     public int getWeight() {
