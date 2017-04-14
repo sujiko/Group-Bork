@@ -91,8 +91,8 @@ public class Item {
 *gives the integer weight of the item(the so called score)
 *@return the weight of the object
 */
-    public int getWeight() {
-        return this.weight;
+    public int getScore() {
+        return this.score;
     }
     /**
     * gets the list of verbs out of the hashtable for messages
