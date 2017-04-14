@@ -216,5 +216,12 @@ public class Room {
         }
         return null;
     }
+    public boolean contains(Item item){
+        if(containingItems.contains(item)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
