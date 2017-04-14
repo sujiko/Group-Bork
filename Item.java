@@ -69,21 +69,13 @@ public class Item {
 *@return the messaged connected to the verb
 */
     public String getMessageForVerb(String verb) {
-         CommandFactory in = CommandFactory.getInstance();
+         EventFactory in = EventFactory.getInstance();
         if(extraCommands.containsKey(verb)){
            for (int i=0;i< extraCommands.get(verb).length;i++){
                String todo=extraCommands.get(verb)[i];
-               String[] commandWithNumber= todo.split("(");
-               if(commandWithNumber.length==2){
-                   String number=commandWithNumber[1].substring(0, commandWithNumber[1].length()-1);
-                   int topass= Integer.valueOf(number);
-                   
-              commands.execute();
+               Event done= in.parse(todo);
+               done.execute();
                }
-               
-              Command commands= in.parse(todo);
-              commands.execute();
-           }
         }
         return messages.getOrDefault(verb, null);
     }
@@ -91,8 +83,8 @@ public class Item {
 *gives the integer weight of the item(the so called score)
 *@return the weight of the object
 */
-    public int getWeight() {
-        return this.weight;
+    public int getScore() {
+        return this.score;
     }
     /**
     * gets the list of verbs out of the hashtable for messages
