@@ -9,8 +9,11 @@ package GroupBork;
  *
  * @author Qures
  */
-abstract class Event {
+public class DieEvent extends Event{
     
-abstract void execute();
+    public void execute(){
+        GameState state = GameState.Instance();
+        
+    }
     
 }
