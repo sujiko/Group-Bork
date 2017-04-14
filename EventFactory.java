@@ -43,6 +43,8 @@ public class EventFactory {
                        return new ScoreEvent(actedUpon);
                    case "die":
                        return new DieEvent();
+                   case "teleport":
+                       return new TeleportEvent();
                        
                }
                        
