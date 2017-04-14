@@ -22,7 +22,7 @@ public class TransformEvent extends Event {
         GameState in= GameState.Instance();
 
            if(in.getInventoryNames().contains(item.getPrimaryName())){
-            in.minusScore(in.getItemFromInventoryNamed(actedUpon).getScore());
+            in.minusScore(in.getItemFromInventoryNamed(item.getPrimaryName()).getScore());
             in.removeFrominventory(item);
             in.addToInventory(in.getDungeon().getItem(actedUpon)); 
             in.addScore(in.getItemFromInventoryNamed(actedUpon).getScore());

@@ -33,7 +33,7 @@ public class EventFactory {
                if(event.length==2){
                    actedUpon=event[1].substring(0, event[1].length()-1);
                }
-               switch (event[0]){
+               switch (action){
                    case "disappear":
                        return new DissapearEvent(item);
                    case "transform":

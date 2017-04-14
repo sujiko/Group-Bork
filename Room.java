@@ -209,10 +209,12 @@ public class Room {
     * @param String n
     */
     public Item getItemNamed(String n) {
+        if(!containingItems.isEmpty()){
         for (Item i : containingItems) {
             if (i.getPrimaryName().equals(n)) {
                 return i;
             }
+        }
         }
         return null;
     }
