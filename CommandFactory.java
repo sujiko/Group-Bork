@@ -67,6 +67,9 @@ public class CommandFactory {
             case "i":
                 toDo= new InventoryCommand();
                 break;
+            case "health":
+            case "h":
+                toDo = new HealthCommand();
             default:
                 if(actedUpon!=""){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
