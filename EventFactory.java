@@ -44,7 +44,10 @@ public class EventFactory {
                    case "die":
                        return new DieEvent();
                    case "teleport":
-                       return new TeleportEvent();
+                       return new TeleportEvent();                      
+                   default:
+                       System.out.println("There was an error with the EventFactory Class... Exiting.");
+                       System.exit(54);
                        
                }
                        
