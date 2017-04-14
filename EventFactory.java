@@ -26,7 +26,7 @@ public class EventFactory {
         return onlyInstance;
     }
     
-    public Event parse(String eventString) {
+    public Event parse(String eventString, Item item) {
                String[] event= eventString.split("(");
                String action= event[0].toLowerCase();
                if(event.length==2){
@@ -34,13 +34,13 @@ public class EventFactory {
                }
                switch (event[0]){
                    case "disappear":
-                       return new DissapearEvent();
+                       return new DissapearEvent(item);
                    case "transform":
-                       return new TransformEvent(actedUpon);
+                       return new TransformEvent(actedUpon,item);
                    case "wound":
-                       return new WoundEvent(actedUpon);
+                       return new WoundEvent(actedUpon,item);
                    case "score":
-                       return new ScoreEvent(actedUpon);
+                       return new ScoreEvent(actedUpon,item);
                    case "die":
                        return new DieEvent();
                        

@@ -73,7 +73,7 @@ public class Item {
         if(extraCommands.containsKey(verb)){
            for (int i=0;i< extraCommands.get(verb).length;i++){
                String todo=extraCommands.get(verb)[i];
-               Event done= in.parse(todo);
+               Event done= in.parse(todo,this);
                done.execute();
                }
         }
