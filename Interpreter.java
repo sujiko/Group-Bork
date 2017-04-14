@@ -35,12 +35,11 @@ public class Interpreter {
         System.out.println("Welcome to " + state.getDungeon().getName());
         System.out.println(state.getAdvenurersCurrentRoom().getTitle());
         System.out.println(state.getAdvenurersCurrentRoom().describe());
-        boolean haveTheyQuit = false;
-        while (!haveTheyQuit) {
+        while (state.running) {
             String whatTheyGave = promptUser(input);
             if (whatTheyGave.equalsIgnoreCase("quit")) {
                 System.out.println("Thanks for playing!");
-                haveTheyQuit=true;
+                state.running=false;
             }else{
             CommandFactory in = CommandFactory.getInstance();
             Command toGo=in.parse(whatTheyGave);

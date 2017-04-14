@@ -27,6 +27,7 @@ public class GameState {
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private int score;
     private int health;
+    public  boolean running=true;
 
     private GameState() {
     }
@@ -272,4 +273,5 @@ public class GameState {
     public void minusHealth(int i) {
         this.health -= i;
     }
+
 }
