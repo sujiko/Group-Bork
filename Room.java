@@ -144,7 +144,7 @@ public class Room {
                 }
             } else {
                 writer.write(this.getTitle() + ":\n");
-                writer.write("beenHere= false\n");
+                writer.write("beenHere=false\n");
 
                 String contains = "";
                 for (Item i : containingItems) {
