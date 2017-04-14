@@ -70,6 +70,7 @@ public class CommandFactory {
             case "health":
             case "h":
                 toDo = new HealthCommand();
+                break;
             default:
                 if(actedUpon!=""){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
