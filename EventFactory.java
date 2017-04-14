@@ -28,12 +28,22 @@ public class EventFactory {
     
     public Event parse(String eventString) {
                String[] event= eventString.split("(");
-               String action= event[0];
+               String action= event[0].toLowerCase();
                if(event.length==2){
                    String actedUpon=event[1].substring(0, event[1].length()-1);
                }
                switch (event[0]){
-                   
+                   case "disappear":
+                       return new DissapearEvent();
+                   case "transform":
+                       return new TransformEvent(actedUpon);
+                   case "wound":
+                       return new WoundEvent(actedUpon);
+                   case "score":
+                       return new ScoreEvent(actedUpon);
+                   case "die":
+                       return new DieEvent();
+                       
                }
                        
     }
