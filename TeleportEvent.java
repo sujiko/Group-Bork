@@ -5,8 +5,7 @@
  */
 package GroupBork;
 
-import java.util.Hashtable;
-import java.util.Set;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,10 +20,12 @@ public class TeleportEvent extends Event{
     
     @Override
     void execute() {
-        Hashtable rooms = GameState.Instance().getDungeon().getRooms();
-        Set keys = rooms.keySet();
-        int limit = keys.size();
+        ArrayList<Room> rooms = GameState.Instance().getDungeon().getRooms();
+        int limit = rooms.size();
         int next = (int)(Math.random() * limit);
+        Room room = rooms.get(next);
+        GameState.Instance().setAdventurersCurrentRoom(room);
+        
     }
     
     
