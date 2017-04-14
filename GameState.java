@@ -51,6 +51,7 @@ public class GameState {
     public void initialize(Dungeon dungeon) {
         currentDungeon = dungeon;
         currentRoom = currentDungeon.getEntry();
+        genInitialHealth();
     }
 
     /**
