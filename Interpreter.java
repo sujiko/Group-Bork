@@ -24,7 +24,7 @@ public class Interpreter {
         String fileName= input.nextLine();
         if(fileName.endsWith(".sav")){
             state.restore(fileName);
-        }else if(fileName.endsWith(".bork")){
+        }else if(fileName.endsWith(".zork")){
          Dungeon thisDungeon = new Dungeon(fileName,true);
          state.initialize(thisDungeon);
         }
