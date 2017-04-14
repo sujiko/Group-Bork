@@ -33,7 +33,7 @@ public class Item {
                 if (split[0].contains("[")){
                     String[] extra = split[0].split("\\[");
                     if (extra.length == 2) {
-                        String commandsString = extra[1].substring(0, extra[1].length() - 2);
+                        String commandsString = extra[1].substring(0, extra[1].length() - 1);
                         String[] commands = commandsString.split(",");
                         extraCommands.put(extra[0], commands);
                     }
