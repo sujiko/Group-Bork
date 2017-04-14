@@ -9,13 +9,14 @@ package GroupBork;
  *
  * @author christian
  */
-public class DissapearEvent extends Event {
+public class DisappearEvent extends Event {
     private Item item;
-    public DissapearEvent(Item item){
+    public DisappearEvent(Item item){
         this.item=item;
     }
-    @Override
+
     void execute() {
+        GameState.Instance().isGone(item);
         if(GameState.Instance().getInventoryNames().contains(item.getPrimaryName())){
             GameState.Instance().removeFrominventory(item);
         }else if(GameState.Instance().getAdvenurersCurrentRoom().contains(item)){

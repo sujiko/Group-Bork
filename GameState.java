@@ -29,6 +29,7 @@ public class GameState {
     private int health;
     private int maxHealth;
     public  boolean running=true;
+    private ArrayList<Item> outOfGame= new ArrayList<Item>();
 
     private GameState() {
     }
@@ -173,6 +174,12 @@ public class GameState {
             }
             itemsInInventory = itemsInInventory.substring(0, itemsInInventory.length() - 1);
             writer.write("Inventory: " + itemsInInventory + "\n");
+            String itemsOutOfGame="";
+            for(Item j: outOfGame){
+                itemsOutOfGame+= j.getPrimaryName()+",";
+            }
+            itemsOutOfGame= itemsOutOfGame.substring(0,itemsOutOfGame.length()-1);
+            writer.write("Items that no longer exist: " + itemsOutOfGame+ "\n");
             writer.close();
         } catch (Exception e) {
 
@@ -216,6 +223,14 @@ public class GameState {
             String[] loadItems = line.split(",");
             for (String i : loadItems) {
                 inventory.add(currentDungeon.getItem(i));
+            }
+            line = buffer.readLine();
+            split = line.split(":");
+            line = split[1].trim();
+            String[] destroyItems = line.split(",");
+            for(String i : destroyItems){
+                Event getRid= new DisappearEvent(this.getDungeon().getItem(i));
+                getRid.execute();
             }
 
         } catch (Exception e) {
@@ -291,5 +306,12 @@ public class GameState {
     public void minusHealth(int i) {
         this.health -= i;
     }
-
+    /* 
+    * this method adds items that have been taken out of the game to the out of game arraylist
+    *@param i
+    *               The item to add
+    */
+public void isGone(Item i){
+    this.outOfGame.add(i);
+}
 }

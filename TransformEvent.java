@@ -20,7 +20,7 @@ public class TransformEvent extends Event {
     
     public void execute(){
         GameState in= GameState.Instance();
-
+        in.isGone(item);
            if(in.getInventoryNames().contains(item.getPrimaryName())){
             in.minusScore(in.getItemFromInventoryNamed(item.getPrimaryName()).getScore());
             in.removeFrominventory(item);

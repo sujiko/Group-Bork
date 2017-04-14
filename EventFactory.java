@@ -35,7 +35,7 @@ public class EventFactory {
                }
                switch (action){
                    case "disappear":
-                       return new DissapearEvent(item);
+                       return new DisappearEvent(item);
                    case "transform":
                        return new TransformEvent(actedUpon,item);
                    case "wound":
