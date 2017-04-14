@@ -48,8 +48,8 @@ public class EventFactory {
                    default:
                        System.out.println("There was an error with the EventFactory Class... Exiting.");
                        System.exit(54);
-                       
+                       return null;
                }
-                       
+                return null;       
     }
 }
