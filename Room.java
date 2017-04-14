@@ -170,7 +170,7 @@ public class Room {
             String line = buffer.readLine();
             if (line.equals("beenHere=true")) {
                 beenHere = true;
-            } else if (!line.equals("beenHere=false")) {
+            } else if (!line.equals("beenHere= false")) {
                 System.out.println("THIS FILE ISN'T CORRECT.");
                 System.exit(54);
             }
