@@ -32,6 +32,7 @@ public class TakeCommand extends Command {
             return "You already have the "+itemName;
         }else if(state.getItemInVicinityNamed(itemName)!= null){
         state.addToInventory(state.getItemInVicinityNamed(itemName));
+        state.addScore(state.getItemFromInventoryNamed(itemName).getScore());
         return itemName+" taken.";
         }else{
             return "There is no "+itemName+" here.";

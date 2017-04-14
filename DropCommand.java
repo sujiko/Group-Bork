@@ -31,6 +31,7 @@ public class DropCommand extends Command {
             if(state.getItemFromInventoryNamed(itemName)== null){
                 return "You do not have "+itemName+" in your inventory!";
             }else{
+                state.minusScore(state.getItemFromInventoryNamed(itemName).getScore());
                 state.removeFrominventory(state.getItemFromInventoryNamed(itemName));
                 return "Dropped "+itemName+".";
             }

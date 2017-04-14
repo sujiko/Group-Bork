@@ -20,11 +20,15 @@ public class TransformEvent extends Event {
     
     public void execute(){
         GameState in= GameState.Instance();
+
            if(in.getInventoryNames().contains(item.getPrimaryName())){
+               in.minusScore(in.getItemFromInventoryNamed(actedUpon).getScore());
             in.removeFrominventory(item);
+            in.addToInventory(in.getDungeon().getItem(actedUpon));  
         }else if(in.getAdvenurersCurrentRoom().contains(item)){
             in.getAdvenurersCurrentRoom().remove(item);
+            in.getAdvenurersCurrentRoom().add(in.getDungeon().getItem(actedUpon));
         }
-           in.addToInventory(in.getDungeon().getItem(actedUpon));       
+     
     }
 }
