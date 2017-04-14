@@ -27,10 +27,11 @@ public class EventFactory {
     }
     
     public Event parse(String eventString, Item item) {
-               String[] event= eventString.split("(");
+               String[] event= eventString.split("\\(");
                String action= event[0].toLowerCase();
+               String actedUpon=null;
                if(event.length==2){
-                   String actedUpon=event[1].substring(0, event[1].length()-1);
+                   actedUpon=event[1].substring(0, event[1].length()-1);
                }
                switch (event[0]){
                    case "disappear":
@@ -49,7 +50,6 @@ public class EventFactory {
                        System.out.println("There was an error with the EventFactory Class... Exiting.");
                        System.exit(54);
                        return null;
-               }
-                return null;       
+               }      
     }
 }
