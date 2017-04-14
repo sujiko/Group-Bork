@@ -11,6 +11,6 @@ package GroupBork;
  */
 abstract class Event {
     
-abstract String execute();
+abstract void execute();
     
 }
