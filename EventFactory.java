@@ -41,11 +41,11 @@ public class EventFactory {
                    case "wound":
                        return new WoundEvent(actedUpon,item);
                    case "score":
-                       return new ScoreEvent(actedUpon,item);
+                       return new ScoreEvent(actedUpon);
                    case "die":
                        return new DieEvent();
                    case "teleport":
-                       return new TeleportEvent();                      
+                       return new TeleportEvent(); 
                    default:
                        System.out.println("There was an error with the EventFactory Class... Exiting.");
                        System.exit(54);

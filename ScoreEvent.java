@@ -9,11 +9,11 @@ package GroupBork;
  *
  * @author Qures
  */
-public class ScoreEvent {
+public class ScoreEvent extends Event {
 
     int scoreToAdd;
 
-    public void ScoreEvent(String number) {
+    public ScoreEvent(String number) {
         scoreToAdd = Integer.valueOf(number);
     }
 
