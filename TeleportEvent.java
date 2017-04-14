@@ -25,6 +25,8 @@ public class TeleportEvent extends Event{
         int next = (int)(Math.random() * limit);
         Room room = rooms.get(next);
         GameState.Instance().setAdventurersCurrentRoom(room);
+        System.out.println(GameState.Instance().getAdvenurersCurrentRoom().getTitle() +"\n");
+        System.out.println(GameState.Instance().getAdvenurersCurrentRoom().describe()+ "\n");
         
     }
     
