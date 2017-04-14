@@ -9,7 +9,7 @@ package GroupBork;
  *
  * @author Qures
  */
-public class WinEvent {
+public class WinEvent extends Event{
     
     public void execute(){
                     GameState state = GameState.Instance();
