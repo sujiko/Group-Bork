@@ -13,7 +13,7 @@ public class DieEvent extends Event{
     
     public void execute(){
         GameState state = GameState.Instance();
-        
+        state.running=false;
     }
     
 }
