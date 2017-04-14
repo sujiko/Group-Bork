@@ -38,7 +38,6 @@ public class Interpreter {
         while (state.running) {
             String whatTheyGave = promptUser(input);
             if (whatTheyGave.equalsIgnoreCase("quit")) {
-                System.out.println("Thanks for playing!");
                 state.running=false;
             }else{
             CommandFactory in = CommandFactory.getInstance();
@@ -46,6 +45,7 @@ public class Interpreter {
             System.out.println(toGo.execute());
             }
         }
+        System.out.println("Thanks for Playing!");
             
     }
 /**
