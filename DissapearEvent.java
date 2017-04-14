@@ -16,7 +16,7 @@ public class DissapearEvent extends Event {
     }
     @Override
     void execute() {
-        if(GameState.Instance().getInventoryNames().contains(item)){
+        if(GameState.Instance().getInventoryNames().contains(item.getPrimaryName())){
             GameState.Instance().removeFrominventory(item);
         }else if(GameState.Instance().getAdvenurersCurrentRoom().contains(item)){
             GameState.Instance().getAdvenurersCurrentRoom().remove(item);
