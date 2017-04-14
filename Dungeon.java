@@ -192,8 +192,9 @@ public class Dungeon {
     public Item getItem(String primaryName){
         return items.get(primaryName);
     }
-    public Hashtable getRooms(){
-        return this.rooms;
+    public ArrayList getRooms(){
+        ArrayList<Room> roomlist = new ArrayList<>(rooms.values());
+        return roomlist;
     }
 
 }
