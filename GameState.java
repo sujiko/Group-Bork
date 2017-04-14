@@ -27,6 +27,7 @@ public class GameState {
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private int score;
     private int health;
+    private int maxHealth;
     public  boolean running=true;
 
     private GameState() {
@@ -236,6 +237,22 @@ public class GameState {
      */
     public int getHealth() {
         return this.health;
+    }
+    /*
+    * this returns the players initial health
+    *@return the integer of the players inital health
+    */
+    public int getMaxHealth(){
+        return this.maxHealth;
+    }
+    /*
+    * this generates the characters initial health.
+    *
+    */
+    public void genInitialHealth(){
+        int Health = (int)(Math.random()*20)+10;
+        this.maxHealth=Health;
+        this.health=Health;
     }
 
     /* 
