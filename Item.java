@@ -31,7 +31,7 @@ public class Item {
             while (!currentLine.equals("---")) {
                 String[] split = currentLine.split(":");
                 if (split[0].contains("[")){
-                    String[] extra = split[0].split("[");
+                    String[] extra = split[0].split("\\[");
                     if (extra.length == 2) {
                         String commandsString = extra[1].substring(0, extra[1].length() - 2);
                         String[] commands = commandsString.split(",");
@@ -41,10 +41,8 @@ public class Item {
                 } else {
                     messages.put(split[0], split[1]);
                 }
-
-            }
-
             currentLine = buffer.readLine();
+            }
         buffer.mark(1);
 
     } catch (Exception e ) {
