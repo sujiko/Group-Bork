@@ -71,6 +71,10 @@ public class CommandFactory {
             case "h":
                 toDo = new HealthCommand();
                 break;
+            case "score":
+            case "s":
+                toDo = new ScoreCommand();
+                break;
             default:
                 if(actedUpon!=""){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
