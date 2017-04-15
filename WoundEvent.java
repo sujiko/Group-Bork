@@ -11,15 +11,23 @@ package GroupBork;
  */
 public class WoundEvent extends Event {
     
-    private String actedUpon;
+    private String number;
     private Item item;
     public WoundEvent(String actedUpon, Item item){
-        this.actedUpon=actedUpon;
+        this.number=actedUpon;
         this.item = item;
         
     }
     @Override
     void execute() {
+        GameState state=GameState.Instance();
+            if(number.startsWith("-")){
+                int negativeNumber=Integer.valueOf(number.substring(1, number.length()));
+                state.minusHealth(negativeNumber);
+            }else{
+                int positiveNumber=Integer.valueOf(number);
+                state.addHealth(positiveNumber);
+            }
     }
     
 }
