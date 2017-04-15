@@ -28,8 +28,8 @@ public class GameState {
     private int score;
     private int health;
     private int maxHealth;
-    public  boolean running=true;
-    private ArrayList<Item> outOfGame= new ArrayList<Item>();
+    public boolean running = true;
+    private ArrayList<Item> outOfGame = new ArrayList<Item>();
 
     private GameState() {
     }
@@ -167,6 +167,8 @@ public class GameState {
             writer.write("Bork V3.0\n");
             currentDungeon.storeState(writer);
             writer.write("Adventurer: \n");
+            writer.write("Initial Health:" + this.maxHealth);
+            writer.write("CurrentHealth:" + this.getHealth());
             writer.write("Current Room: " + onlyInstance.getAdvenurersCurrentRoom().getTitle() + "\n");
             String itemsInInventory = "";
             for (Item i : inventory) {
@@ -174,12 +176,12 @@ public class GameState {
             }
             itemsInInventory = itemsInInventory.substring(0, itemsInInventory.length() - 1);
             writer.write("Inventory: " + itemsInInventory + "\n");
-            String itemsOutOfGame="";
-            for(Item j: outOfGame){
-                itemsOutOfGame+= j.getPrimaryName()+",";
+            String itemsOutOfGame = "";
+            for (Item j : outOfGame) {
+                itemsOutOfGame += j.getPrimaryName() + ",";
             }
-            itemsOutOfGame= itemsOutOfGame.substring(0,itemsOutOfGame.length()-1);
-            writer.write("Items that no longer exist: " + itemsOutOfGame+ "\n");
+            itemsOutOfGame = itemsOutOfGame.substring(0, itemsOutOfGame.length() - 1);
+            writer.write("Items that no longer exist: " + itemsOutOfGame + "\n");
             writer.close();
         } catch (Exception e) {
 
@@ -215,6 +217,12 @@ public class GameState {
             buffer.readLine();
             line = buffer.readLine();
             split = line.split(":");
+            this.maxHealth = Integer.valueOf(split[1]);
+            line = buffer.readLine();
+            split = line.split(":");
+            this.health = Integer.valueOf(split[1]);
+            line = buffer.readLine();
+            split = line.split(":");
             line = split[1].trim();
             currentRoom = currentDungeon.getRoom(line);
             line = buffer.readLine();
@@ -228,8 +236,8 @@ public class GameState {
             split = line.split(":");
             line = split[1].trim();
             String[] destroyItems = line.split(",");
-            for(String i : destroyItems){
-                Event getRid= new DisappearEvent(this.getDungeon().getItem(i));
+            for (String i : destroyItems) {
+                Event getRid = new DisappearEvent(this.getDungeon().getItem(i));
                 getRid.execute();
             }
 
@@ -254,21 +262,23 @@ public class GameState {
     public int getHealth() {
         return this.health;
     }
+
     /*
     * this returns the players initial health
     *@return the integer of the players inital health
-    */
-    public int getMaxHealth(){
+     */
+    public int getMaxHealth() {
         return this.maxHealth;
     }
+
     /*
     * this generates the characters initial health.
     *
-    */
-    public void genInitialHealth(){
-        int Health = (int)(Math.random()*20)+10;
-        this.maxHealth=Health;
-        this.health=Health;
+     */
+    public void genInitialHealth() {
+        int Health = (int) (Math.random() * 20) + 10;
+        this.maxHealth = Health;
+        this.health = Health;
     }
 
     /* 
@@ -288,14 +298,19 @@ public class GameState {
     public void minusScore(int i) {
         this.score -= i;
     }
-    
-   /* 
+
+    /* 
     * this adds to the players health
     *@param i
     *               the interget to be subtracted from the players health
      */
     public void addHealth(int i) {
-        this.health += i;
+        if((this.health += i)<=this.maxHealth){
+        this.health += i;            
+        }else{
+            this.health=this.maxHealth;
+        }
+
     }
 
     /* 
@@ -305,13 +320,17 @@ public class GameState {
      */
     public void minusHealth(int i) {
         this.health -= i;
+        if(this.health<=0){
+            this.running=false;
+        }
     }
+
     /* 
     * this method adds items that have been taken out of the game to the out of game arraylist
     *@param i
     *               The item to add
-    */
-public void isGone(Item i){
-    this.outOfGame.add(i);
-}
+     */
+    public void isGone(Item i) {
+        this.outOfGame.add(i);
+    }
 }
