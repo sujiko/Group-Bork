@@ -33,7 +33,6 @@ public class Interpreter {
 
 
         System.out.println("Welcome to " + state.getDungeon().getName());
-        System.out.println(state.getAdvenurersCurrentRoom().getTitle());
         System.out.println(state.getAdvenurersCurrentRoom().describe());
         while (state.running) {
             String whatTheyGave = promptUser(input);
