@@ -23,10 +23,10 @@ public class WoundEvent extends Event {
         GameState state=GameState.Instance();
             if(number.startsWith("-")){
                 int negativeNumber=Integer.valueOf(number.substring(1, number.length()));
-                state.minusHealth(negativeNumber);
+                state.addHealth(negativeNumber);
             }else{
                 int positiveNumber=Integer.valueOf(number);
-                state.addHealth(positiveNumber);
+                state.minusHealth(positiveNumber);
             }
     }
     
