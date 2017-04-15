@@ -167,8 +167,8 @@ public class GameState {
             writer.write("Bork V3.0\n");
             currentDungeon.storeState(writer);
             writer.write("Adventurer: \n");
-            writer.write("Initial Health:" + this.maxHealth);
-            writer.write("CurrentHealth:" + this.getHealth());
+            writer.write("Initial Health:" + this.maxHealth +"\n");
+            writer.write("CurrentHealth:" + this.getHealth()+"\n");
             writer.write("Current Room: " + onlyInstance.getAdvenurersCurrentRoom().getTitle() + "\n");
             String itemsInInventory = "";
             for (Item i : inventory) {
