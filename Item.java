@@ -86,6 +86,10 @@ public boolean goesBy(String name) {
                 String todo = extraCommands.get(verb)[i];
                 Event done = in.parse(todo, this);
                 done.execute();
+                if(done.getClass() == (new TeleportEvent().getClass())){
+                    return messages.getOrDefault(verb, null)+"\n"+
+                            GameState.Instance().getAdvenurersCurrentRoom().describe();
+                }
             }
         }
         return messages.getOrDefault(verb, null);
