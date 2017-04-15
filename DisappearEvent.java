@@ -19,6 +19,7 @@ public class DisappearEvent extends Event {
         GameState.Instance().isGone(item);
         if(GameState.Instance().getInventoryNames().contains(item.getPrimaryName())){
             GameState.Instance().removeFrominventory(item);
+            GameState.Instance().getAdvenurersCurrentRoom().remove(item);
         }else if(GameState.Instance().getAdvenurersCurrentRoom().contains(item)){
             GameState.Instance().getAdvenurersCurrentRoom().remove(item);
         }
