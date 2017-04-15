@@ -26,6 +26,7 @@ public class TransformEvent extends Event {
             in.removeFrominventory(item);
             in.addToInventory(in.getDungeon().getItem(actedUpon)); 
             in.addScore(in.getItemFromInventoryNamed(actedUpon).getScore());
+            in.getAdvenurersCurrentRoom().remove(item);
         }else if(in.getAdvenurersCurrentRoom().contains(item)){
             in.getAdvenurersCurrentRoom().remove(item);
             in.getAdvenurersCurrentRoom().add(in.getDungeon().getItem(actedUpon));
