@@ -322,6 +322,7 @@ public class GameState {
         this.health -= i;
         if(this.health<=0){
             this.running=false;
+            System.out.println("It would seem this action killed you.");
         }
     }
 
