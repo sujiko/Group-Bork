@@ -72,11 +72,10 @@ public class CommandFactory {
                 toDo = new HealthCommand();
                 break;
             case "score":
-            case "s":
                 toDo = new ScoreCommand();
                 break;
             default:
-                if(actedUpon!=""){
+                if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
                 }else{
                     toDo = new UnknownCommand(commandString);

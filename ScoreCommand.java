@@ -7,12 +7,10 @@ public class ScoreCommand extends Command
 {
 	private int currentScore;
 
-	public HealthCommand()
+	public ScoreCommand()
 	{
-		this.currentScore = GameState.Instance().getSore();
+		this.currentScore = GameState.Instance().getScore();
 	}
-
-	@Override
 	String execute()
 	{
 		return "Your score is " + currentScore;
