@@ -74,6 +74,9 @@ public class CommandFactory {
             case "score":
                 toDo = new ScoreCommand();
                 break;
+            case "attack":
+                toDo = new AttackCommand();
+                break;
             default:
                 if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
