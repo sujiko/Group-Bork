@@ -90,7 +90,7 @@ public class Monster {
         if(this.hostile==true){
             this.hostile=false;
         }else{
-            this.hostile=false;
+            this.hostile=true;
         }
     }
     public boolean getHostility(){
