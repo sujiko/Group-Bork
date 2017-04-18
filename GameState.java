@@ -55,6 +55,8 @@ public class GameState {
         currentRoom = currentDungeon.getEntry();
         genInitialHealth();
         genStrength();
+        monInitialize();
+        
     }
 
     /**
@@ -351,5 +353,22 @@ public class GameState {
      */
     public Monster[] getMon(){
         return this.monsters;
+    }
+    
+     public void monInitialize(){    
+        Monster hydra = new Monster("Hydra");
+        Monster dragon = new Monster("dragon");
+        Monster skeleton = new Monster("Skeleton");
+        Monster basalisk = new Monster("Basalisk");
+        Monster shopkeeper = new Monster("ShopKeeper");
+        Monster Chimera = new Monster("Chimera");
+        Monster[] a = new Monster[6];
+        a[0]=hydra;
+        a[1]=dragon;
+        a[2]=skeleton;
+        a[3]=basalisk;
+        a[4]=shopkeeper;
+        a[5]= Chimera;
+        this.monsters = a;
     }
 }
