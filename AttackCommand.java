@@ -15,8 +15,7 @@ public class AttackCommand extends Command{
      * when run the AttackCommand will assign the name of the monster to the variable monsterName
      * @param noun 
      */
-    public AttackCommand(String noun){
-        this.monsterName=noun;
+    public AttackCommand(){
     }
     
     /**
