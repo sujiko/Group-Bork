@@ -253,12 +253,23 @@ public class Room {
         this.monster=null;
         this.monsterHere=false;
     }
+    /**
+     * 
+     * @return if room contains monster
+     */
     public boolean hasMonster(){
         if(this.monsterHere==false){
             return false;
         }else{
             return true;
         }
+    }
+    /**
+     * this returns monster
+     * @return monster
+     */
+    public Monster getMonster(){
+        return this.monster;
     }
 
 }
