@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.FileReader;
-import static java.lang.System.out;
 import java.util.ArrayList;
 
 /**
@@ -28,8 +27,10 @@ public class GameState {
     private int score;
     private int health;
     private int maxHealth;
+    private int strength;
     public boolean running = true;
     private ArrayList<Item> outOfGame = new ArrayList<Item>();
+    private Monster[] monsters= new Monster[5];
 
     private GameState() {
     }
@@ -53,6 +54,7 @@ public class GameState {
         currentDungeon = dungeon;
         currentRoom = currentDungeon.getEntry();
         genInitialHealth();
+        genStrength();
     }
 
     /**
@@ -280,6 +282,12 @@ public class GameState {
         this.maxHealth = Health;
         this.health = Health;
     }
+    /**
+     * this generates the characters initial strength.
+     */
+    public void genStrength(){
+        this.strength = (int)(Math.random() * 20)+10;
+    }
 
     /* 
     * this adds to the players score
@@ -325,6 +333,9 @@ public class GameState {
             System.out.println("It would seem this action killed you.");
         }
     }
+    public int getStrength(){
+        return this.strength;
+    }
 
     /* 
     * this method adds items that have been taken out of the game to the out of game arraylist
@@ -333,5 +344,12 @@ public class GameState {
      */
     public void isGone(Item i) {
         this.outOfGame.add(i);
+    }
+    /**
+     * this helps get the monsters for a room.
+     * @return monster array
+     */
+    public Monster[] getMon(){
+        return this.monsters;
     }
 }
