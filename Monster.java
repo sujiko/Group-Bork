@@ -21,15 +21,11 @@ public class Monster {
      * the monster when created will have a name,some health, an attack power
      * so it can fight you and a list of items it can drop when dead
      * @param name
-     * @param attk
      * @param loot 
-     * @param health
      */
-    public Monster(String name,int health,int attk, ArrayList loot){
-        this.attkPWR=attk;
-        this.lootItems=loot;
+    public Monster(String name){
+        //this.lootItems=loot;
         this.monName=name;
-        this.life = health;
     }
     
     /**
@@ -103,7 +99,7 @@ public class Monster {
     public boolean getHostility(){
         return this.hostile;
     }
-            
+    
     
     
     
