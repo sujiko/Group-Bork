@@ -27,7 +27,13 @@ public class MovementCommand extends Command {
         Room dest = current.leaveBy(dir);
         if (dest != null) {
             state.setAdventurersCurrentRoom(dest);
-            return state.getAdvenurersCurrentRoom().describe();
+            state.getAdvenurersCurrentRoom().addMonster();
+            if(state.getAdvenurersCurrentRoom().hasMonster()==true){
+                return state.getAdvenurersCurrentRoom().describe()+ "this monster contains a "
+                    +state.getAdvenurersCurrentRoom().getMonster().getMonName();
+            }else{
+                return state.getAdvenurersCurrentRoom().describe();
+            }
         }
         return "You can't go that Way!";
     }
