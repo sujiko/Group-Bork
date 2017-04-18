@@ -60,6 +60,13 @@ public class Monster {
         return this.life;
     }
     /**
+     * allows monster to take damage
+     * @param dmg 
+     */
+    public void takeDMG(int dmg){
+        this.life -=dmg;
+    }
+    /**
      * this will be used to scale the monsters health according to the users level
      */
     public void setLife(){
