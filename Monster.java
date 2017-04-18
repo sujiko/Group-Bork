@@ -15,7 +15,8 @@ public class Monster {
     private String monName;
     private int life;
     private int attkPWR;
-    private ArrayList lootItems;
+    private ArrayList<Item> lootItems;
+    boolean hostile = true;
     /**
      * the monster when created will have a name,some health, an attack power
      * so it can fight you and a list of items it can drop when dead
@@ -26,16 +27,9 @@ public class Monster {
      */
     public Monster(String name,int health,int attk, ArrayList loot){
         this.attkPWR=attk;
-        this.lootItems= loot;
+        this.lootItems=loot;
         this.monName=name;
         this.life = health;
-    }
-    /**
-     * when the monster attacks this method will calculate how much damage you take
-     * @return a string telling you how much damage you took
-     */
-    public String MonAttack(){
-        return "";
     }
     
     /**
@@ -56,9 +50,10 @@ public class Monster {
      * this will be used to scale the monsters attack according to the users level
      */
     public void setAttack(){
+        this.attkPWR = GameState.Instance().getStrength() /4;
     }
     /**
-     * 
+     * this will return the monsters life
      * @return monsters amount of health
      */
     public int getLife(){
@@ -68,13 +63,38 @@ public class Monster {
      * this will be used to scale the monsters health according to the users level
      */
     public void setLife(){
+        int gamerLife = GameState.Instance().getHealth();
+        switch((int)(Math.random()*1)){
+            case 0:
+                this.life = gamerLife + 5;
+                break;
+            case 1:
+                this.life = gamerLife -5;
+                break;
+        }       
     }
     /**
      * this will be used to get the loot the monster holds when it is killed
-     * @return an arraylist of loot that will be dropped when the monsters health hits 0
+     * an arraylist of loot that will be dropped when the monsters health hits 0
      */
-    public ArrayList getLoot(){
-        return this.lootItems;
+    public void getLoot(){
+        for(Item item:lootItems){
+            GameState.Instance().addToInventory(item);
+        }
+    }
+    /**
+     * this will be used to manually set the monsters hostility when they are created
+     * some monsters will not be initially be hostile until you attack them
+     */
+    public void setHostility(){
+        if(this.hostile==true){
+            this.hostile=false;
+        }else{
+            this.hostile=false;
+        }
+    }
+    public boolean getHostility(){
+        return this.hostile;
     }
             
     
