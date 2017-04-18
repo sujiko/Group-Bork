@@ -231,10 +231,10 @@ public class Room {
     */
     public void addMonster(){
         if(hasMonster() == false){
-            switch((int)(Math.random()*1)){
-            case 0:
+            switch((int)(Math.random()*5)){
+            case 0: case 2:
                 break;
-            case 1:
+            case 1:case 3: case 4:case 5:
                 int grab = (int)(Math.random()*5)+2;
                 Monster[] temp =GameState.Instance().getMon();
                 this.monster= temp[grab];
@@ -249,7 +249,7 @@ public class Room {
      * when a monster dies this removes it from the room and adds the loot to your inventory
      */
     public void removeMonster(){
-        this.monster.getLoot();
+        //this.monster.getLoot();
         this.monster=null;
         this.monsterHere=false;
     }
