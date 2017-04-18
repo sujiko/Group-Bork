@@ -10,7 +10,22 @@ package GroupBork;
  * @author christian
  */
 public class Combat {
-     
+     private int userHP;
+     private int userATK;
+     private int monHP;
+     private int monATK;
+     private GameState State;
+     private String monName;
+     //private int followerHP;
+     //private int followerATK;
+    public Combat(){
+        this.State=GameState.Instance();
+        this.userHP=State.getHealth();
+        this.userATK= State.getStrength();
+        this.monHP= State.getAdvenurersCurrentRoom().getMonster().getLife();
+        this.monATK=State.getAdvenurersCurrentRoom().getMonster().getAttack();
+        this.monName= State.getAdvenurersCurrentRoom().getMonster().getMonName();
+    }
     /**
      * will calculate how much damage the monster inflicts on the user
      * @return damage to user
@@ -31,8 +46,41 @@ public class Combat {
      * will calculate how much damage you do towards the monster
      * @return damage to monster
      */
-    public int userVmon(){
-        return 0;
+    public String userVmon(){
+        String resp= "";
+        int chance = (int)(Math.random()*99)+1;
+        if(chance>80){
+            int dmg = this.userATK *2;
+            this.monHP -= dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp="You killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }
+        }else if((chance<80)&& (chance>20)){
+            int dmg = this.userATK;
+            this.monHP -= dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();  
+                resp="You killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }
+        }else if(chance<20){
+            int dmg = this.userATK/2;
+            this.monHP -=dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp="You killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }       
+        }
+        return resp;
     }
     
     /**
