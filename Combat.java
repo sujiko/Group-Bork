@@ -30,8 +30,23 @@ public class Combat {
      * will calculate how much damage the monster inflicts on the user
      * @return damage to user
      */
-    public int monVuser(){
-        return 0;
+    public String monVuser(){
+        String resp ="";
+        int chance = (int)(Math.random()*99)+1;
+        if(chance>80){
+            int dmg = this.monATK *2;
+            resp= "The "+this.monName+" inflicted "+dmg+" on you";
+            State.minusHealth(dmg);
+        }else if((chance<80)&& (chance>50)){
+            int dmg = this.monATK;
+            resp= "The "+this.monName+" inflicted "+dmg+" on you";
+            State.minusHealth(dmg);
+        }else if(chance<50){
+            int dmg = this.monATK/2;
+            resp= "The "+this.monName+" inflicted "+dmg+" on you";
+            State.minusHealth(dmg);
+        }
+        return resp;
     }
     
     /**
