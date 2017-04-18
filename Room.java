@@ -8,8 +8,6 @@ package GroupBork;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.PrintWriter;
-
 /**
  * Creates and manages Room objects
  * @author qureshi225
@@ -21,6 +19,8 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Exit> exitsTo = new ArrayList<Exit>();
     private ArrayList<Item> containingItems = new ArrayList<Item>();
+    private Monster monster=null;
+    private boolean monsterHere =false;
 
     /**
     * Constructor for Room
@@ -223,6 +223,41 @@ public class Room {
             return true;
         }else{
             return false;
+        }
+    }
+    
+    /**
+     * this adds a monster to the room
+    */
+    public void addMonster(){
+        if(hasMonster() == false){
+            switch((int)(Math.random()*1)){
+            case 0:
+                break;
+            case 1:
+                int grab = (int)(Math.random()*5)+2;
+                Monster[] temp =GameState.Instance().getMon();
+                this.monster= temp[grab];
+                this.monsterHere=true;
+                monster.setLife();
+                monster.setAttack();
+                break;      
+            }
+        }
+    }
+    /**
+     * when a monster dies this removes it from the room and adds the loot to your inventory
+     */
+    public void removeMonster(){
+        this.monster.getLoot();
+        this.monster=null;
+        this.monsterHere=false;
+    }
+    public boolean hasMonster(){
+        if(this.monsterHere==false){
+            return false;
+        }else{
+            return true;
         }
     }
 
