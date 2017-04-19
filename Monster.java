@@ -86,15 +86,16 @@ public class Monster {
         }
     }
     /**
-     * this will be used to manually set the monsters hostility when they are created
-     * some monsters will not be initially be hostile until you attack them
+     * this will be used to manually set the monsters hostility to true.
      */
-    public void setHostility(){
-        if(this.hostile==true){
-            this.hostile=false;
-        }else{
-            this.hostile=true;
-        }
+    public void setHostileT(){
+        this.hostile=true;
+    }
+    /**
+     * this will be used to set monster hostility to false
+     */
+    public void setHostileF(){
+        this.hostile=false;
     }
     public boolean getHostility(){
         return this.hostile;
