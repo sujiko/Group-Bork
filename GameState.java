@@ -355,7 +355,7 @@ public class GameState {
         return this.monsters;
     }
     
-     public void monInitialize(){    
+     public void monInitialize(){  
         Monster hydra = new Monster("Hydra");
         Monster dragon = new Monster("dragon");
         dragon.setHostileF();
