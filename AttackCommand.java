@@ -26,6 +26,6 @@ public class AttackCommand extends Command{
      */
     public String execute(){
         Combat a = new Combat();
-        return a.userVmon() +"\n"+a.monVuser()+"\n";
+        return a.monVuser()+"\n"+a.userVmon();
     }
 }
