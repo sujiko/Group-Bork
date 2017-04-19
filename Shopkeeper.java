@@ -13,8 +13,9 @@ import java.util.Random;
  *this class holds a shopkeeper if there is one for the bork game.
  * @author qureshi225
  */
-public class Shopkeeper {
+public class Shopkeeper{
   private ArrayList<Item> toSell= new ArrayList<Item>();
+  private final int HEALTH= 9001;
   
   
   /**
