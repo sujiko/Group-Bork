@@ -196,5 +196,8 @@ public class Dungeon {
         ArrayList<Room> roomlist = new ArrayList<>(rooms.values());
         return roomlist;
     }
-
+    public ArrayList getItemsList(){
+        ArrayList<Item> loot = new ArrayList<>(items.values());
+        return loot;
+    }
 }
