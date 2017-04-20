@@ -361,8 +361,7 @@ public class GameState {
         dragon.setHostileF();
         Monster skeleton = new Monster("Skeleton");
         Monster basalisk = new Monster("Basalisk");
-        Monster shopkeeper = new Monster("ShopKeeper");
-        shopkeeper.setHostileF();
+        Monster shopkeeper = new Shopkeeper("ShopKeeper");
         Monster Chimera = new Monster("Chimera");
         this.monsters = new Monster[6];
         this.monsters[0]=hydra;
