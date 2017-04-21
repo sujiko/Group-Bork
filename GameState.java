@@ -29,6 +29,7 @@ public class GameState {
     private int maxHealth;
     private int strength;
     public boolean running = true;
+    private boolean danger = true;
     private ArrayList<Item> outOfGame = new ArrayList<Item>();
     private Monster[] monsters= new Monster[5];
 
