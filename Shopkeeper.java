@@ -77,4 +77,7 @@ public class Shopkeeper extends Monster{
                 + toSell.get(itemThree).getPrimaryName() + ", " + toSell.get(itemFour).getPrimaryName() + ".");
 
     }
+    public ArrayList getInventory(){
+        return this.toSell;
+    }
 }

@@ -11,15 +11,21 @@ package GroupBork;
  */
 public class BuyCommand extends Command {
     String itemName;
+    Item i;
     public BuyCommand(String itemName){
+        GameState in= GameState.Instance();
         this.itemName=itemName;
+        in.g
     }
     /**
     * this will execute the command interaction between a shopkeeper and player
     *@return the string output to the player.
     */
     public String execute(){
-        
+        GameState in=GameState.Instance();
+        if (in.getZennys()>= ){
+            
+        }
        return "";
      }
 }

@@ -27,6 +27,7 @@ public class GameState {
     private int score;
     private int health;
     private int maxHealth;
+    private int playersZennys;
     private int strength;
     public boolean running = true;
     private ArrayList<Item> outOfGame = new ArrayList<Item>();
@@ -355,7 +356,11 @@ public class GameState {
         return this.monsters;
     }
     
-     public void monInitialize(){  
+    /**
+     *this initializes the monsters in the dungeon. 
+     * 
+     */
+    public void monInitialize(){  
         Monster hydra = new Monster("Hydra");
         Monster dragon = new Monster("dragon");
         dragon.setHostileF();
@@ -371,5 +376,9 @@ public class GameState {
         this.monsters[3]=basalisk;
         this.monsters[4]=shopkeeper;
         this.monsters[5]= dragon;
+    }
+    
+    public int getZennys(){
+        return this.playersZennys;
     }
 }
