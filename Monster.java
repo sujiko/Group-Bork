@@ -15,7 +15,7 @@ public class Monster {
     private String monName;
     private int life;
     private int attkPWR;
-    private ArrayList<Item> lootItems;
+    private ArrayList<Item> lootItems= new ArrayList<Item>();
     boolean hostile = true;
     /**
      * the monster when created will have a name,some health, an attack power
@@ -24,7 +24,6 @@ public class Monster {
      * @param loot 
      */
     public Monster(String name){
-        //this.lootItems=loot;
         this.monName=name;
     }
     
@@ -81,8 +80,21 @@ public class Monster {
      * an arraylist of loot that will be dropped when the monsters health hits 0
      */
     public void getLoot(){
-        for(Item item:lootItems){
+        if (lootItems.isEmpty()){
+        }else
+            for(Item item:lootItems){
             GameState.Instance().addToInventory(item);
+        }
+        
+    }
+    
+    
+    public void genLoot(){
+        ArrayList<Item> possibleLoot =GameState.Instance().getDungeon().getItemsList();
+        int gen = (int)(Math.random()*3)+1;
+        for(int x = 1; x<gen; x++){
+            int lootItem = (int)(Math.random()* possibleLoot.size()-1);
+            this.lootItems.add(possibleLoot.get(lootItem));
         }
     }
     /**

@@ -17,18 +17,18 @@ import java.util.Random;
 public class Shopkeeper extends Monster{
 
     private ArrayList<Item> toSell = new ArrayList<Item>();
-    private String name;
-    private final int LIFE = 9001;
+    private String monName;
+    private int life = 9001;
     private int attkPWR;
     boolean hostile = false;
-    
+    private ArrayList<Item> lootItems = new ArrayList<Item>();
     /**
      *
      * @param name
      */
     public Shopkeeper(String name){
         super(name);
-        this.name=name;
+        this.monName=name;
     }
 
     /**

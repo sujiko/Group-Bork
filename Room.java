@@ -249,7 +249,7 @@ public class Room {
      * when a monster dies this removes it from the room and adds the loot to your inventory
      */
     public void removeMonster(){
-        //this.monster.getLoot();
+        this.monster.getLoot();
         this.monster=null;
         this.monsterHere=false;
     }
