@@ -16,7 +16,8 @@ import java.util.Random;
  */
 public class Shopkeeper extends Monster{
 
-    private ArrayList<Item> toSell = new ArrayList<Item>();
+    private Hashtable<Item,String> toSellMessages = new Hashtable<Item,String>();
+    private ArrayList<Item> toSell= new ArrayList<Item>();
     public static String monName;
     private int life = 9001;
     private int attkPWR;
@@ -27,7 +28,7 @@ public class Shopkeeper extends Monster{
      *
      * @param name
      */
-    private Shopkeeper(String name){
+    Shopkeeper(String name){
         super(name);
         this.monName=name;
     }
@@ -45,6 +46,7 @@ public class Shopkeeper extends Monster{
      */
     public void removeItem(Item i) {
         toSell.remove(i);
+        toSellMessages.remove(i);
     }
 
     /**
@@ -52,7 +54,8 @@ public class Shopkeeper extends Monster{
      *
      * @param i the item to be added
      */
-    public void addItem(Item i) {
+    public void addItem(Item i,String m) {
+        toSellMessages.put(i,m);
         toSell.add(i);
     }
 
@@ -80,9 +83,11 @@ public class Shopkeeper extends Monster{
         int itemTwo = rng.nextInt(toSell.size());
         int itemThree = rng.nextInt(toSell.size());
         int itemFour = rng.nextInt(toSell.size());
-        System.out.println("I'm selling: " + toSell.get(itemOne).getPrimaryName() + ", " + toSell.get(itemTwo).getPrimaryName() + ", "
-                + toSell.get(itemThree).getPrimaryName() + ", " + toSell.get(itemFour).getPrimaryName() + ".");
-
+        System.out.println("I'm selling: ");
+                System.out.println(toSell.get(itemOne).getPrimaryName() + ": " + toSellMessages.get(toSell.get(itemOne)));
+                System.out.println(toSell.get(itemTwo).getPrimaryName() + ": " + toSellMessages.get(toSell.get(itemTwo)));
+                System.out.println(toSell.get(itemThree).getPrimaryName() + ": " + toSellMessages.get(toSell.get(itemThree)));
+                System.out.println(toSell.get(itemFour).getPrimaryName() + ": " + toSellMessages.get(toSell.get(itemFour)));
     }
     public ArrayList getInventory(){
         return this.toSell;

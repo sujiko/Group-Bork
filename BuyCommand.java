@@ -15,7 +15,7 @@ public class BuyCommand extends Command {
     public BuyCommand(String itemName){
         GameState in= GameState.Instance();
         this.itemName=itemName;
-        in.g
+        i=in.getDungeon().getItem(itemName);
     }
     /**
     * this will execute the command interaction between a shopkeeper and player
@@ -23,9 +23,12 @@ public class BuyCommand extends Command {
     */
     public String execute(){
         GameState in=GameState.Instance();
-        if (in.getZennys()>= ){
-            
+        if (in.getZennys()>= Shopkeeper.Instance().price(i)){
+            Shopkeeper.Instance().removeItem(i);
+            in.addToInventory(i);
+            return "Thanks for buying the "+ itemName;
+        }else{
+           return "You don't have enough Zennys friendo!";
         }
-       return "";
      }
 }

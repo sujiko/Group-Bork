@@ -21,6 +21,8 @@ public class Room {
     private ArrayList<Item> containingItems = new ArrayList<Item>();
     private Monster monster=null;
     private boolean monsterHere =false;
+    private Shopkeeper shop= Shopkeeper.Instance();
+    private boolean containsShop=false;
 
     /**
     * Constructor for Room
@@ -226,6 +228,14 @@ public class Room {
         }
     }
     
+    public boolean containsShopKeep(){
+        return this.containsShop;
+    }
+    
+    public void addShop(){
+        this.containsShop=true;
+        this.shop=Shopkeeper.Instance();
+    }
     /**
      * this adds a monster to the room
     */

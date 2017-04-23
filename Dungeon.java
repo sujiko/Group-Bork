@@ -86,6 +86,16 @@ public class Dungeon {
             }
         }catch(Exception e){
     }
+        try{
+            buffer.readLine();
+            String currentLine=buffer.readLine();
+            Shopkeeper shop= new Shopkeeper(currentLine);
+            currentLine=buffer.readLine();
+            
+            
+        }catch(Exception e){
+            System.out.println("Warning: this file doesn't have a shop.");
+        }
     }
 
     public Dungeon(Room entry, String name) {
