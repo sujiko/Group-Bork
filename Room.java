@@ -103,7 +103,7 @@ public class Room {
             for (int i = 0; i < exitsTo.size(); i++) {
                 fullDescription += exitsTo.get(i).getDescription() + "\n";
             }
-        }
+        } 
             for (int i = 0; i < containingItems.size(); i++) {
                 fullDescription += "You see a " + containingItems.get(i).getPrimaryName() + ".\n";
             
