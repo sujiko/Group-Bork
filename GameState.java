@@ -33,6 +33,7 @@ public class GameState {
     private int strength;
     public boolean running = true;
     private boolean danger = true;
+    private boolean verbose = true;
     private ArrayList<Item> outOfGame = new ArrayList<Item>();
     private Monster[] monsters= new Monster[5];
 
@@ -432,5 +433,22 @@ public class GameState {
      */
     public void useMana(int use){
         this.mana = this.mana -use;
+    }
+    /**
+     * allows you to change verbose mode
+     */
+    public void changeVerbose(){
+        if(this.verbose){
+            this.verbose=false;
+        }else{
+            this.verbose=true;
+        }
+    }
+    /**
+     * allows you to get the boolean for verbose
+     * @return 
+     */
+    public boolean getVerbose(){
+        return this.verbose;
     }
 }
