@@ -85,6 +85,7 @@ public class Shopkeeper extends Monster {
     public Room getRoom() {
         return this.currentRoom;
     }
+    
 
     /**
      * this method will tell you everything the shopkeeper is currently selling.
@@ -104,7 +105,7 @@ public class Shopkeeper extends Monster {
         addToSelling(toSell.get(itemFour));
     }
 
-    public ArrayList getInventory() {
+    public ArrayList<Item> getInventory() {
         return this.toSell;
     }
 
