@@ -8,6 +8,7 @@ package GroupBork;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.util.Random;
 /**
  * Creates and manages Room objects
  * @author qureshi225
@@ -96,8 +97,21 @@ public class Room {
         if (!beenHere) {
             beenHere = true;
             fullDescription = this.desc + fullDescription;
+            if(Shopkeeper.Instance().getRoom()==this){
+                fullDescription= fullDescription+ "\n"+ "You hear a booming voice echo through the room. \n It declares, ' Welcome young "
+                        + "traveler to  "+ Shopkeeper.Instance().getMonName()+ "'s Shop!'";
+                Random rng= new Random();
+                int seed= rng.nextInt();
+                Shopkeeper.Instance().getSelling(seed);
+            }
             return this.title + "\n" + fullDescription;
         } else {
+            if(Shopkeeper.Instance().getRoom()==this){
+                fullDescription= fullDescription+ "\n The voice booms through the room again. \n 'Welcome back young one, i have a new stock for you!'";
+                                Random rng= new Random();
+                int seed= rng.nextInt();
+                Shopkeeper.Instance().getSelling(seed);
+            }
             return this.title + "\n" + fullDescription;
         }
     }
