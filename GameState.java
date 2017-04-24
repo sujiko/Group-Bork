@@ -59,6 +59,7 @@ public class GameState {
         currentRoom = currentDungeon.getEntry();
         genInitialHealth();
         genStrength();
+        genMana();
         monInitialize();
         
     }
@@ -430,6 +431,6 @@ public class GameState {
      * @param use 
      */
     public void useMana(int use){
-        this.mana -= use;
+        this.mana = this.mana -use;
     }
 }
