@@ -88,12 +88,15 @@ public class Room {
     */
     public String describe() {
         String fullDescription = "";
-        for (int i = 0; i < exitsTo.size(); i++) {
-            fullDescription += exitsTo.get(i).getDescription() + "\n";
-        }
-        for (int i = 0; i < containingItems.size(); i++) {
+        if(GameState.Instance().getVerbose()==true){
+            for (int i = 0; i < exitsTo.size(); i++) {
+            fullDescription += exitsTo.get(i).getDescription() + "\n";}
+        }else{
+            for (int i = 0; i < containingItems.size(); i++) {
             fullDescription += "You see a " + containingItems.get(i).getPrimaryName() + ".\n";
+            }
         }
+       
         if (!beenHere) {
             beenHere = true;
             fullDescription = this.desc + fullDescription;
