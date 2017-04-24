@@ -11,6 +11,10 @@ package GroupBork;
  */
 public class Follower {
     private int health;
+    private boolean isFollowing= false;
+    private Item offItem;
+    private Item onItem;
+    
 
   /** 
   * gives the current health of the follower
