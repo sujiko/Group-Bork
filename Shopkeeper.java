@@ -62,6 +62,10 @@ public class Shopkeeper extends Monster {
         toSellMessages.put(i, m);
         toSell.add(i);
     }
+    
+    public String getName(){
+        return this.monName;
+    }
 
     /**
      * this method will givey ou the price of the item you ask the shopkeeper
