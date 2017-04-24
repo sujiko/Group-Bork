@@ -89,6 +89,9 @@ public class CommandFactory {
             case "Teleport":case"teleport":
                 toDo = new TeleportCommand();
                 break;
+            case "verbose":case"Verbose":
+                toDo = new VerboseCommand();
+                break;
             default:
                 if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   

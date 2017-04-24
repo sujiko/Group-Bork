@@ -19,7 +19,7 @@ public class VerboseCommand extends Command {
         if(GameState.Instance().getVerbose()==true){
             return "Verbose mode is on";
         }else{
-            return "Verbose mose is off";
+            return "Verbose mode is off";
         }
     }
 }
