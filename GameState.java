@@ -27,6 +27,8 @@ public class GameState {
     private int score;
     private int health;
     private int maxHealth;
+    private int mana;
+    private int maxMana;
     private int playersZennys;
     private int strength;
     public boolean running = true;
@@ -396,5 +398,38 @@ public class GameState {
     }
     public int getZennys(){
         return this.playersZennys;
+    }
+    /**
+     * generates the users mana for magic commands
+     */
+    public void genMana(){
+        int Mana = (int) (Math.random() * 20) + 10;
+        this.mana = Mana;
+        this.maxMana = Mana;
+    }
+    /**
+     * @return max mana a person has
+     */
+    public int getMaxMana(){ return this.maxMana;}
+    /**
+     * @return current manna
+     */
+    public int getMana(){return this.mana;}
+    /**
+     * recovers 25 of your total mana
+     */
+    public void recoverMana(){
+        int recover = (int)(this.maxMana *.25);
+        this.mana += recover;
+        if(this.mana> this.maxMana){
+            this.mana= this.maxMana;
+        }
+    }
+    /**
+     * takes away mana when you use magic
+     * @param use 
+     */
+    public void useMana(int use){
+        this.mana -= use;
     }
 }
