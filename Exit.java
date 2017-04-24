@@ -32,12 +32,12 @@ public class Exit {
             String starting= buffer.readLine();
             String direction= buffer.readLine();
             String destination=buffer.readLine();
-            this.locked = false;
-            if(!currentLine.equals("---")){
-                String keyItem = buffer.readLine();
+//            this.locked = false;
+           // if(!currentLine.equals("---")){
+               // String keyItem = buffer.readLine();
                 //this.locked = true;
                 //this.key = keyItem;
-            }
+          //  }
             this.src= dungeon.getRoom(starting);
             this.dest=dungeon.getRoom(destination);
             this.dir=direction;

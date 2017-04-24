@@ -71,9 +71,11 @@ public class Dungeon {
         }
         try {
             String currentLine = "";
-            while (!currentLine.equals("===")) {
+          while (!currentLine.equals("===")) {
                 Room roomToAdd = new Room(buffer, this, initState);
                 this.add(roomToAdd);
+                buffer.reset();
+                currentLine=buffer.readLine();
             }
             buffer.readLine();
         } catch (Exception e) {
