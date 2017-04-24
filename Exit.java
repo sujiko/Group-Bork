@@ -16,12 +16,14 @@ public class Exit {
    private Room src;
    private Room dest;
    private String description;
+   private String key;
    private boolean locked;
    
    /**
     * exit constructor from file
     * add whether or not an exit is locked and what the unlock condition is
-    * @param BufferedReader buffer, Dungeon dungeon
+    * @param buffer 
+    * @param dungeon
     */
    public Exit(BufferedReader buffer, Dungeon dungeon){
         try{
@@ -30,6 +32,12 @@ public class Exit {
             String starting= buffer.readLine();
             String direction= buffer.readLine();
             String destination=buffer.readLine();
+            this.locked = false;
+            if(!currentLine.equals("---")){
+                String keyItem = buffer.readLine();
+                this.locked = true;
+                this.key = keyItem;
+            }
             this.src= dungeon.getRoom(starting);
             this.dest=dungeon.getRoom(destination);
             this.dir=direction;
@@ -43,7 +51,9 @@ public class Exit {
    
    /**
     * exit constructor from given values
-    * @param String dir, Room src, Room dest
+    * @param dir 
+    * @param src
+    * @param dest
     */
    public Exit(String dir, Room src, Room dest){
     this.dir=dir;
@@ -87,11 +97,28 @@ public class Exit {
        return dest;
    }
    /**
-    * unlocks exit
-    *
+    * returns whether or not an exit can be passed through
+    * @return lock status
     */
-   public void unlock()
+   public boolean getLockState()
    {
-      this.locked = false;
+       return locked;
+   }
+   
+   /**
+    * unlocks exit
+    * @param keyItem
+    */
+   public void unlock(String keyItem)
+   {
+      if(this.key.equals(keyItem))
+      {
+         this.locked = false;
+         System.out.println("The door unlocked!");
+      }
+      else
+      {
+         System.out.println("That didn't seem do do anything...");
+      }
    }
 }

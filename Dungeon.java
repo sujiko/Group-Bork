@@ -165,6 +165,14 @@ public class Dungeon {
                 room.storeState(writer);
             }
             writer.write("===\n");
+            writer.write("ShopKeeper inventory:");
+            for ( int i= 0 ; i< Shopkeeper.Instance().getInventory().size(); i++){
+                if (i== Shopkeeper.Instance().getInventory().size()-1){
+                    writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName());
+                    break;
+                }
+                writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName()+",");
+            }
         } catch (Exception e) {
 
         }
