@@ -36,6 +36,7 @@ public class Room {
      */
     public Room(BufferedReader buffer, Dungeon dungeon, boolean initState) {
         try {
+            buffer.reset();
             String currentLine = buffer.readLine();
             if (!currentLine.equals("===")) {
                 this.title = currentLine;
@@ -53,9 +54,10 @@ public class Room {
                         currentLine = buffer.readLine();
                     }
                     this.setDesc(currentLine + "\n");
-                    currentLine=buffer.readLine();
+                currentLine=buffer.readLine();
                 }
             } else {
+                currentLine=buffer.readLine();
             }
         } catch (Exception e) {
 

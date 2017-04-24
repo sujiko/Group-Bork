@@ -65,15 +65,18 @@ public class Dungeon {
         }
         try {
             buffer.readLine();
+            buffer.mark(1);
             this.entry = new Room(buffer, this, initState);
             this.add(entry);
         } catch (Exception e) {
         }
         try {
             String currentLine = "";
+            buffer.mark(1);
           while (!currentLine.equals("===")) {
                 Room roomToAdd = new Room(buffer, this, initState);
                 this.add(roomToAdd);
+                buffer.mark(1);
                 currentLine=buffer.readLine();
             }
             //buffer.readLine();
