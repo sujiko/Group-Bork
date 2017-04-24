@@ -105,7 +105,7 @@ public class Shopkeeper extends Monster {
         addToSelling(toSell.get(itemFour));
     }
 
-    public ArrayList getInventory() {
+    public ArrayList<Item> getInventory() {
         return this.toSell;
     }
 
