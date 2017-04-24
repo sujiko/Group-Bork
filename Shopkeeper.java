@@ -85,6 +85,7 @@ public class Shopkeeper extends Monster {
     public Room getRoom() {
         return this.currentRoom;
     }
+    
 
     /**
      * this method will tell you everything the shopkeeper is currently selling.
