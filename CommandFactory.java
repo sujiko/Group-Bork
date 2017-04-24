@@ -83,6 +83,9 @@ public class CommandFactory {
             case "attack":
                 toDo = new AttackCommand();
                 break;
+            case "heal":case "Heal":
+                toDo = new HealCommand();
+                break;
             default:
                 if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   
