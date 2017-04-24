@@ -11,8 +11,15 @@ package GroupBork;
  * @author qureshi225
  */
 public class VerboseCommand extends Command {
+    public VerboseCommand(){
+    }
     
     public String execute(){
-        return "";
+        GameState.Instance().changeVerbose();
+        if(GameState.Instance().getVerbose()==true){
+            return "Verbose mode is on";
+        }else{
+            return "Verbose mose is off";
+        }
     }
 }
