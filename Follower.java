@@ -35,11 +35,7 @@ public class Follower {
   public int getHealth(){
     return this.health;
   }
-  /**
-  * this method is to heal the follower
-  *param i
-  *       the int that the follower will heal by
-  */
+  
   
   /**
   *this method is to damage the follower
