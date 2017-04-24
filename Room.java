@@ -27,7 +27,9 @@ public class Room {
 
     /**
     * Constructor for Room
-    * @param BufferedReader buffer, Dungeon dungeon, boolean initState
+    * @param buffer 
+    * @param dungeon
+    * @param initState
     */
     public Room(BufferedReader buffer, Dungeon dungeon, boolean initState) {
         try {
@@ -59,7 +61,7 @@ public class Room {
     
     /**
     * Alternate constructor for Room
-    * @param String title
+    * @param title
     */
     public Room(String title) {
         this.title = title;
@@ -76,7 +78,7 @@ public class Room {
 
     /**
     * Setter method for the room's description
-    * @param String desc 
+    * @param desc 
     */
     public void setDesc(String desc) {
         this.desc += desc;
@@ -85,6 +87,7 @@ public class Room {
     /**
     * Prints the full description of the Room if the player has not been in the room previously
     * If the user has been to the room before, prints only the title
+    * @return description
     */
     public String describe() {
         String fullDescription = "";
@@ -122,14 +125,22 @@ public class Room {
     /**
     * Checks if leaving in a given direction is possible, and if it is possible, returns the new room
     * If a direction cannot be moved in, prints whether there is an exit that needs to be unlocked
-    * @param String dir
+    * @param dir
+    * @return new room
     */
     public Room leaveBy(String dir) {
         for (int i = 0; i < exitsTo.size(); i++) {
             Exit getExit = exitsTo.get(i);
             String directionGoing = getExit.getDir();
             if (dir.equals(directionGoing)) {
-                return exitsTo.get(i).getDest();
+                if(getExit.getLockState())
+                {
+                  System.out.println("Looks like you need a key to go this way.");
+                  return null;
+                }
+                else{
+                 return exitsTo.get(i).getDest();  
+                }
             }
         }
         return null;
@@ -137,7 +148,7 @@ public class Room {
 
     /**
     * Adds given exits to the ArrayList of exits for the given room
-    * @param Exit exit
+    * @param exit
     */
     public void addExit(Exit exit) {
         exitsTo.add(exit);
@@ -146,7 +157,7 @@ public class Room {
 
     /**
     * Saves the current state of the room
-    * @param BufferedWriter writer
+    * @param writer
     */
     public void storeState(BufferedWriter writer) {
         try {
@@ -182,7 +193,8 @@ public class Room {
 
     /**
     * Restores the previous state of the room
-    * @param BufferedReader buffer, Dungeon dungeon
+    * @param buffer
+    * @param dungeon
     */
     public void restoreState(BufferedReader buffer, Dungeon dungeon) {
         try {
@@ -209,7 +221,7 @@ public class Room {
 
     /**
     * Adds an item to the ArrayList of items that the room contains
-    * @param Item i
+    * @param i
     */
     public void add(Item i) {
         containingItems.add(i);
@@ -217,7 +229,7 @@ public class Room {
 
     /**
     * Removes an item from the room and from the item ArrayList
-    * @param Item i
+    * @param i
     */
     public void remove(Item i) {
         containingItems.remove(i);
@@ -225,7 +237,8 @@ public class Room {
 
     /**
     * Searches for an item by name in the items list and returns it if it contains that item
-    * @param String n
+    * @param n
+    * @return item
     */
     public Item getItemNamed(String n) {
         if(!containingItems.isEmpty()){
