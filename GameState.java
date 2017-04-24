@@ -27,6 +27,8 @@ public class GameState {
     private int score;
     private int health;
     private int maxHealth;
+    private int mana;
+    private int maxMana;
     private int playersZennys;
     private int strength;
     public boolean running = true;
@@ -57,6 +59,7 @@ public class GameState {
         currentRoom = currentDungeon.getEntry();
         genInitialHealth();
         genStrength();
+        genMana();
         monInitialize();
         
     }
@@ -377,8 +380,57 @@ public class GameState {
         this.monsters[4]=shopkeeper;
         this.monsters[5]= dragon;
     }
-    
+    /**
+     * this can change the danger for monster creations
+     */
+    public void setDanger(){
+        if(this.danger==true){
+            this.danger=false;
+        }else{
+            this.danger=true;
+        }
+    }
+    /**
+     * evaluates danger and returns it
+     * @return danger
+     */
+    public boolean getDanger(){
+        return this.danger;
+    }
     public int getZennys(){
         return this.playersZennys;
+    }
+    /**
+     * generates the users mana for magic commands
+     */
+    public void genMana(){
+        int Mana = (int) (Math.random() * 20) + 10;
+        this.mana = Mana;
+        this.maxMana = Mana;
+    }
+    /**
+     * @return max mana a person has
+     */
+    public int getMaxMana(){ return this.maxMana;}
+    /**
+     * @return current manna
+     */
+    public int getMana(){return this.mana;}
+    /**
+     * recovers 25 of your total mana
+     */
+    public void recoverMana(){
+        int recover = (int)(this.maxMana *.25);
+        this.mana += recover;
+        if(this.mana> this.maxMana){
+            this.mana= this.maxMana;
+        }
+    }
+    /**
+     * takes away mana when you use magic
+     * @param use 
+     */
+    public void useMana(int use){
+        this.mana = this.mana -use;
     }
 }

@@ -237,10 +237,12 @@ public class Room {
         this.shop=Shopkeeper.Instance();
     }
     /**
-     * this adds a monster to the room
+     * this evaluates the games boolean danger and decided whether to 
+     * add a monster to a room or not.
     */
     public void addMonster(){
-        if(hasMonster() == false){
+        if(GameState.Instance().getDanger()==true){
+               if(hasMonster() == false){
             switch((int)(Math.random()*3)){
             case 0: case 2:
                 break;
@@ -252,8 +254,11 @@ public class Room {
                 monster.setLife();
                 monster.setAttack();
                 break;      
+                }
             }
-        }
+        }else{
+            
+        }     
     }
     /**
      * when a monster dies this removes it from the room and adds the loot to your inventory
