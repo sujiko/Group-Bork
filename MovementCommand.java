@@ -26,6 +26,7 @@ public class MovementCommand extends Command {
         Room current = state.getAdvenurersCurrentRoom();
         Room dest = current.leaveBy(dir);
         if (dest != null) {
+            Shopkeeper.Instance().resetSelling();
             state.setAdventurersCurrentRoom(dest);
             state.recoverMana();
             state.getAdvenurersCurrentRoom().addMonster();

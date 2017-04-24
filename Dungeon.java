@@ -88,14 +88,18 @@ public class Dungeon {
     }
         try{
             buffer.readLine();
-            String currentLine=buffer.readLine();
-            Shopkeeper shop= new Shopkeeper(currentLine);
-            currentLine=buffer.readLine();
-            
-            
         }catch(Exception e){
             System.out.println("Warning: this file doesn't have a shop.");
         }
+            try{
+            String currentLine=buffer.readLine();
+            Shopkeeper shop= new Shopkeeper(currentLine);
+            currentLine=buffer.readLine
+                    Shopkeeper.Instance()
+            } catch(Exception e){
+                
+            }
+
     }
 
     public Dungeon(Room entry, String name) {
