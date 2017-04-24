@@ -74,6 +74,9 @@ public class CommandFactory {
             case "score":
                 toDo = new ScoreCommand();
                 break;
+            case "buy":
+                toDo= new BuyCommand(actedUpon);
+                break;
             case "attack":
                 toDo = new AttackCommand();
                 break;

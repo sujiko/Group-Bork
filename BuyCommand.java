@@ -6,29 +6,43 @@
 package GroupBork;
 
 /**
- *the buy command will allow a player to buy a shopkeepers inventory
+ * the buy command will allow a player to buy a shopkeepers inventory
+ *
  * @author qureshi225
  */
 public class BuyCommand extends Command {
+
     String itemName;
     Item i;
-    public BuyCommand(String itemName){
-        GameState in= GameState.Instance();
-        this.itemName=itemName;
-        i=in.getDungeon().getItem(itemName);
+
+    public BuyCommand(String itemName) {
+        GameState in = GameState.Instance();
+        this.itemName = itemName;
+        i = in.getDungeon().getItem(itemName);
     }
+
     /**
-    * this will execute the command interaction between a shopkeeper and player
-    *@return the string output to the player.
-    */
-    public String execute(){
-        GameState in=GameState.Instance();
-        if (in.getZennys()>= Shopkeeper.Instance().price(i)){
-            Shopkeeper.Instance().removeItem(i);
-            in.addToInventory(i);
-            return "Thanks for buying the "+ itemName;
-        }else{
-           return "You don't have enough Zennys friendo!";
+     * this will execute the command interaction between a shopkeeper and player
+     *
+     * @return the string output to the player.
+     */
+    public String execute() {
+        GameState in = GameState.Instance();
+        if (in.getAdvenurersCurrentRoom() == Shopkeeper.Instance().getRoom()) {
+            if (!itemName.equals("")) {
+                if (in.getZennys() >= Shopkeeper.Instance().price(i)) {
+                    Shopkeeper.Instance().removeItem(i);
+                    in.addToInventory(i);
+                    return "Thanks for buying the " + itemName;
+                } else {
+                    return "You don't have enough Zennys friendo!";
+                }
+
+            } else {
+                return "Buy What?";
+            }
+        } else {
+            return "Theres no shop in here.";
         }
-     }
+    }
 }

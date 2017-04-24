@@ -24,6 +24,7 @@ public class Shopkeeper extends Monster{
     boolean hostile = false;
     private static Shopkeeper onlyInstance;
     private ArrayList<Item> lootItems = new ArrayList<Item>();
+    private Room currentRoom;
     /**
      *
      * @param name
@@ -69,6 +70,12 @@ public class Shopkeeper extends Monster{
     public int price(Item i) {
         int price = i.getScore();
         return price;
+    }
+    public void setRoom(String room){
+        this.currentRoom=GameState.Instance().getDungeon().getRoom(room);
+    }
+    public Room getRoom(){
+        return this.currentRoom;
     }
 
     /**
