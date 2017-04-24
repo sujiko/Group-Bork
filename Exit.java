@@ -35,8 +35,8 @@ public class Exit {
             this.locked = false;
             if(!currentLine.equals("---")){
                 String keyItem = buffer.readLine();
-                this.locked = true;
-                this.key = keyItem;
+                //this.locked = true;
+                //this.key = keyItem;
             }
             this.src= dungeon.getRoom(starting);
             this.dest=dungeon.getRoom(destination);
