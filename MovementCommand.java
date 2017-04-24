@@ -27,10 +27,11 @@ public class MovementCommand extends Command {
         Room dest = current.leaveBy(dir);
         if (dest != null) {
             state.setAdventurersCurrentRoom(dest);
+            state.recoverMana();
             state.getAdvenurersCurrentRoom().addMonster();
             if(state.getAdvenurersCurrentRoom().hasMonster()==true){
                 state.getAdvenurersCurrentRoom().getMonster().genLoot();
-                return state.getAdvenurersCurrentRoom().describe()+ "this monster contains a "
+                return state.getAdvenurersCurrentRoom().describe()+ "this room contains a "
                     +state.getAdvenurersCurrentRoom().getMonster().getMonName();
             }else{
                 return state.getAdvenurersCurrentRoom().describe();
