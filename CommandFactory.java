@@ -92,6 +92,9 @@ public class CommandFactory {
             case "verbose":case"Verbose":
                 toDo = new VerboseCommand();
                 break;
+            case "firebolt":case"Firebolt":
+                toDo= new FireBoltCommand();
+                break;
             default:
                 if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   

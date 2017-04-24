@@ -14,6 +14,7 @@ public class Combat {
      private int userATK;
      private int monHP;
      private int monATK;
+     private int monMaxHP;
      private GameState State;
      private String monName;
      //private int followerHP;
@@ -25,6 +26,7 @@ public class Combat {
         this.monHP= State.getAdvenurersCurrentRoom().getMonster().getLife();
         this.monATK=State.getAdvenurersCurrentRoom().getMonster().getAttack();
         this.monName= State.getAdvenurersCurrentRoom().getMonster().getMonName();
+        this.monMaxHP=State.getAdvenurersCurrentRoom().getMonster().getMax();
     }
     /**
      * will calculate how much damage the monster inflicts on the user
@@ -106,4 +108,30 @@ public class Combat {
         return 0;
     }
     
+    public String magicVmon(){
+        String resp ="You cast Firebolt \n";
+        int random= (int)(Math.random()*1);
+        if(random ==0){
+            int dmg = (int)(this.monMaxHP*.5);
+            this.monHP -=dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp+="You killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp+= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }   
+        }else if(random ==1){
+            int dmg = (int)(this.monMaxHP*.75);
+            this.monHP -=dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp+="You killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp+= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }     
+        }
+        return resp;    
+    }
 }
