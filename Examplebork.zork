@@ -94,7 +94,8 @@ You stand on a circular white balcony overlooking an entry hall. Columnar bannis
 ---
 Undeground Passage
 You find yourself in a menacing hallway, 
-you’re confused how walking straight will transport you vertically. 
+you’re confused how walking straight will transport you vertically.
+---
 ===
 Exits:
 Rotunda
@@ -144,6 +145,7 @@ Underground passage
 Underground passage
 S
 Stephen’s office
+---
 ===
 ShopKeeper:
 Stephen
@@ -156,3 +158,4 @@ goodGrades:....
 StarWarsTee:Oh! Thats my favorite!
 answerKey:Only cheaters buy this… you aren’t a cheater right?
 ---
+===
