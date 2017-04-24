@@ -377,7 +377,23 @@ public class GameState {
         this.monsters[4]=shopkeeper;
         this.monsters[5]= dragon;
     }
-    
+    /**
+     * this can change the danger for monster creations
+     */
+    public void setDanger(){
+        if(this.danger==true){
+            this.danger=false;
+        }else{
+            this.danger=true;
+        }
+    }
+    /**
+     * evaluates danger and returns it
+     * @return danger
+     */
+    public boolean getDanger(){
+        return this.danger;
+    }
     public int getZennys(){
         return this.playersZennys;
     }
