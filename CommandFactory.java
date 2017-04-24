@@ -77,6 +77,9 @@ public class CommandFactory {
             case "buy":
                 toDo= new BuyCommand(actedUpon);
                 break;
+            case "price":
+                toDo= new PriceCommand(actedUpon);
+                break;
             case "attack":
                 toDo = new AttackCommand();
                 break;

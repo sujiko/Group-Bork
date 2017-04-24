@@ -16,9 +16,9 @@ public class BuyCommand extends Command {
     Item i;
 
     public BuyCommand(String itemName) {
-        GameState in = GameState.Instance();
         this.itemName = itemName;
-        i = in.getDungeon().getItem(itemName);
+        GameState in = GameState.Instance();
+
     }
 
     /**
@@ -30,12 +30,17 @@ public class BuyCommand extends Command {
         GameState in = GameState.Instance();
         if (in.getAdvenurersCurrentRoom() == Shopkeeper.Instance().getRoom()) {
             if (!itemName.equals("")) {
+                i = in.getDungeon().getItem(itemName);
+                if(Shopkeeper.Instance().getInventory().contains(i)){
                 if (in.getZennys() >= Shopkeeper.Instance().price(i)) {
                     Shopkeeper.Instance().removeItem(i);
                     in.addToInventory(i);
                     return "Thanks for buying the " + itemName;
                 } else {
                     return "You don't have enough Zennys friendo!";
+                }
+                }else{
+                    return "This shop does not carry that item!";
                 }
 
             } else {
