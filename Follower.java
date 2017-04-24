@@ -14,8 +14,20 @@ public class Follower {
     private boolean isFollowing= false;
     private Item offItem;
     private Item onItem;
+    private static String name;
+    private static Follower onlyInstance;
     
 
+      Follower(String name) {
+        this.name = name;
+    }
+
+    public static synchronized Follower Instance() {
+        if (onlyInstance == null) {
+            onlyInstance= new Follower(name);
+        }
+        return onlyInstance;
+    }
   /** 
   * gives the current health of the follower
   *@return returns the current health of the follower as a int. 
