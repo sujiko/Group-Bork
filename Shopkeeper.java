@@ -26,7 +26,6 @@ public class Shopkeeper extends Monster {
     private ArrayList<Item> lootItems = new ArrayList<Item>();
     private Room currentRoom;
     private ArrayList<Item> selling = new ArrayList<Item>();
-
     /**
      *
      * @param name
