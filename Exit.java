@@ -34,7 +34,7 @@ public class Exit {
             String destination=buffer.readLine();
             this.locked = false;
             if(!currentLine.equals("---")){
-                String keyItem = buffer.readLine();
+                //String keyItem = buffer.readLine();
                 //this.locked = true;
                 //this.key = keyItem;
             }
