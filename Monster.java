@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Monster {
     private String monName;
     private int life;
+    private int maxHP;
     private int attkPWR;
     private ArrayList<Item> lootItems= new ArrayList<Item>();
     boolean hostile = true;
@@ -69,9 +70,11 @@ public class Monster {
         switch((int)(Math.random()*1)){
             case 0:
                 this.life = gamerLife + 5;
+                this.maxHP= gamerLife + 5;
                 break;
             case 1:
                 this.life = gamerLife -5;
+                this.maxHP = gamerLife -5;
                 break;
         }       
     }
@@ -111,6 +114,9 @@ public class Monster {
     }
     public boolean getHostility(){
         return this.hostile;
+    }
+    public int getMax(){
+        return this.maxHP;
     }
     
     
