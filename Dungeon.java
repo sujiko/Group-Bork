@@ -76,7 +76,7 @@ public class Dungeon {
                 this.add(roomToAdd);
                 currentLine=buffer.readLine();
             }
-            buffer.readLine();
+            //buffer.readLine();
         } catch (Exception e) {
 
         }
