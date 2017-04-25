@@ -71,13 +71,9 @@ answerKey
 0
 LookAt:[die]You hear Stephen’s voice menacingly say,”Thats what happens to cheaters…” Everything fades to black around you.
 ---
-DullRing
-50
-Wear[transform(GlowingRing),follow]:You put on the ring and it starts to glow warmly, suddenly, a cute little ghost joins your adventure.
----
-GlowingRing
-90
-Remove[transform(DullRing),follow]:The Ghost looks sad and dissappates into the air.
+key
+5
+use:Maybe you could unlock something with this, if you knew how.
 ---
 ===
 Rooms:
@@ -89,7 +85,7 @@ Contents: DrPepper
 A long, white hallway stretches to the east and west. It is cold here, and you can detect the faint buzz of computers. A vending machine hums softly in the corner.
 ---
 Stephen's office
-Contents: StarWarsToy,WawaTravelMug,donut
+Contents: StarWarsToy,WawaTravelMug,donut,key
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
@@ -145,6 +141,26 @@ Stephen's office
 e
 Basement hallway
 none
+---
+Rotunda balcony
+s
+Underground Passage
+key
+---
+Underground Passage
+n
+Rotunda balcony
+none
+---
+Underground Passage
+s
+Stephen's office
+none
+---
+Stephen's office
+n
+Underground Passage
+key
 ---
 ===
 ShopKeeper:

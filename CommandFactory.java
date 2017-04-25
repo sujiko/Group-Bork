@@ -98,6 +98,9 @@ public class CommandFactory {
             case "firebolt":case"Firebolt":
                 toDo= new FireBoltCommand();
                 break;
+            case "unlock": case "Unlock":
+                toDo = new UnlockCommand();
+                break;
             default:
                 if(!actedUpon.equals("")){
                 toDo= new ItemSpecificCommand(actionCommand,actedUpon);   

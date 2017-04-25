@@ -349,5 +349,15 @@ public class Room {
         this.monsterHere=true;
         this.monster=Shopkeeper.Instance();
     }
+    
+     /**
+     * this returns the exits for the unlock command
+     * 
+     * @return arraylist of exits
+     */
+    public ArrayList<Exit> getExits()
+    {
+        return this.exitsTo;
+    }
 
 }
