@@ -11,15 +11,18 @@ package GroupBork;
  */
 public class Follower {
     private int health;
-    private boolean isFollowing= false;
+    public boolean isFollowing= false;
     private Item offItem;
     private Item onItem;
     private static String name;
     private static Follower onlyInstance;
+    private int ATKpower;
     
 
       Follower(String name) {
         this.name = name;
+        this.health= (int) (GameState.Instance().getMaxHealth()*.75);
+        this.ATKpower= (int)(GameState.Instance().getStrength()*.75);
     }
 
     public static synchronized Follower Instance() {
@@ -35,13 +38,10 @@ public class Follower {
   public int getHealth(){
     return this.health;
   }
-  
-  
-  /**
-  *this method is to damage the follower
-  *param i
-  *        thhe int the follower will take damage by
-  */
+
+  public int getStrength(){
+      return this.ATKpower;
+  }
   
   
 }

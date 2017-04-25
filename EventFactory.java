@@ -48,6 +48,8 @@ public class EventFactory {
                        return new TeleportEvent(); 
                    case "win":
                         return new WinEvent();
+                   case "follow":
+                           return new  FollowEvent();
                    default:
                        System.out.println("There was an error with the EventFactory Class... Exiting.");
                        System.exit(54);
