@@ -69,11 +69,19 @@ examine:The Force is with you, you are one with the Force!
 ---
 answerKey
 0
-LookAt:[die]You hear Stephen’s voice menacingly say,”Thats what happens to cheaters…” Everything fades to black around you.
+lookAt:[die]You hear Stephen’s voice menacingly say,”Thats what happens to cheaters…” Everything fades to black around you.
 ---
 key
 5
 use:Maybe you could unlock something with this, if you knew how.
+---
+DullRing
+50
+wear[transform(GlowingRing),follow]:You put on the ring and it starts to glow warmly, suddenly, a cute little ghost joins your adventure.
+---
+GlowingRing
+90
+remove[transform(DullRing),follow]:The Ghost looks sad and dissappates into the air.
 ---
 ===
 Rooms:

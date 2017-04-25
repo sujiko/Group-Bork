@@ -26,6 +26,19 @@ public class AttackCommand extends Command{
      */
     public String execute(){
         Combat a = new Combat();
-        return a.monVuser()+"\n"+a.userVmon();
+        String resp="";
+        if(Follower.Instance().isFollowing==true){
+            resp +=a.followerVmon();
+            int chance = (int)(Math.random()*1);
+            if(chance ==0){
+                resp += a.monVfollower()+"\n"+a.userVmon();
+            }else{
+                resp += a.monVuser()+"\n"+a.userVmon();
+            }
+        }else{
+            resp += a.monVuser()+"\n"+a.userVmon();
+        }
+        return resp;
+        
     }
 }

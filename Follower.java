@@ -11,17 +11,17 @@ package GroupBork;
  */
 public class Follower {
     private int health;
+    private int maxHp;
     public boolean isFollowing= false;
-    private Item offItem;
-    private Item onItem;
     private static String name;
     private static Follower onlyInstance;
     private int ATKpower;
     
 
       Follower(String name) {
-        this.name = name;
+        this.name ="Casper";
         this.health= (int) (GameState.Instance().getMaxHealth()*.75);
+        this.maxHp= (int)(GameState.Instance().getMaxHealth()*.75);
         this.ATKpower= (int)(GameState.Instance().getStrength()*.75);
     }
 
@@ -42,6 +42,19 @@ public class Follower {
   public int getStrength(){
       return this.ATKpower;
   }
-  
-  
+  public void takeDmg(int dmg){
+      this.health -=dmg;
+      if(this.health<0){
+          this.health=0;
+          this.isFollowing=false;
+          System.out.println(this.name +"has died and is no longer following you");
+      }
+  }
+  public void recoverHP(){
+      int reco = (int)(this.maxHp*.25);
+      this.health += reco;
+      if(this.health>this.maxHp){
+          this.health= this.maxHp;
+      }
+  }
 }
