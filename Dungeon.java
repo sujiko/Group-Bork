@@ -99,12 +99,16 @@ public class Dungeon {
             String currentLine = buffer.readLine();
             Shopkeeper shop = new Shopkeeper(currentLine);
             currentLine = buffer.readLine();
-            Shopkeeper.Instance().setRoom(currentLine);
+            Room room= this.getRoom(currentLine.trim());
+            room.addShop();
+            room.addMonster();
+            Shopkeeper.Instance().setRoom(room);
             buffer.readLine();
             currentLine = buffer.readLine();
             while (!currentLine.equals("---")) {
                 String[] split = currentLine.split(":");
                 Shopkeeper.Instance().addItem(this.getItem(split[0]), split[1]);
+                currentLine=buffer.readLine();
             }
         } catch (Exception e) {
             

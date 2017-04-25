@@ -24,7 +24,7 @@ public class Shopkeeper extends Monster {
     boolean hostile = false;
     private static Shopkeeper onlyInstance;
     private ArrayList<Item> lootItems = new ArrayList<Item>();
-    private String currentRoom;
+    private Room currentRoom;
     private ArrayList<Item> selling = new ArrayList<Item>();
     /**
      *
@@ -33,7 +33,6 @@ public class Shopkeeper extends Monster {
     Shopkeeper(String name) {
         super(name);
         this.monName = name;
-        onlyInstance=this;
     }
 
     public static synchronized Shopkeeper Instance() {
@@ -79,10 +78,8 @@ public class Shopkeeper extends Monster {
         return price;
     }
 
-    public void setRoom(String room) {
-        this.currentRoom= room;
-        GameState.Instance().getDungeon().getRoom(room).addShop();
-        GameState.Instance().getDungeon().getRoom(room).setMonster();
+    public void setRoom(Room room) {
+        this.currentRoom = room;
     }
 
     public Room getRoom() {
