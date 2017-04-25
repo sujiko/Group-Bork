@@ -17,8 +17,8 @@ public class Combat {
      private int monMaxHP;
      private GameState State;
      private String monName;
-     //private int followerHP;
-     //private int followerATK;
+     private int followerHP;
+     private int followerATK;
     public Combat(){
         this.State=GameState.Instance();
         this.userHP=State.getHealth();
@@ -27,6 +27,8 @@ public class Combat {
         this.monATK=State.getAdvenurersCurrentRoom().getMonster().getAttack();
         this.monName= State.getAdvenurersCurrentRoom().getMonster().getMonName();
         this.monMaxHP=State.getAdvenurersCurrentRoom().getMonster().getMax();
+        this.followerHP = Follower.Instance().getHealth();
+        this.followerATK = Follower.Instance().getStrength();
     }
     /**
      * will calculate how much damage the monster inflicts on the user
@@ -55,8 +57,23 @@ public class Combat {
      * will calculate how much damage the monster inflicts on the follower
      * @return damage to follower
      */
-    public int monVfollower(){
-        return 0;
+    public String monVfollower(){
+        String resp="";
+        int chance = (int)(Math.random()*99)+1;
+        if(chance>80){
+            int dmg = this.monATK *2;
+            resp= "The "+this.monName+" inflicted "+dmg+" on your follower";
+            Follower.Instance().takeDmg(dmg);
+        }else if((chance<80)&& (chance>50)){
+            int dmg = this.monATK;
+            resp= "The "+this.monName+" inflicted "+dmg+" on your follower";
+            Follower.Instance().takeDmg(dmg);
+        }else if(chance<50){
+            int dmg = this.monATK/2;
+            resp= "The "+this.monName+" inflicted "+dmg+" on your follower";
+            Follower.Instance().takeDmg(dmg);
+        }
+        return resp;
     }
     
     /**
@@ -65,6 +82,9 @@ public class Combat {
      */
     public String userVmon(){
         String resp= "";
+        if(State.getAdvenurersCurrentRoom().getMonster()==null){
+            return "the monster has already been killed by your follower";
+        }else{
         int chance = (int)(Math.random()*99)+1;
         if(chance>80){
             int dmg = this.userATK *2;
@@ -96,7 +116,7 @@ public class Combat {
             }else{
                 resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
             }       
-        }
+        }}
         return resp;
     }
     
@@ -104,12 +124,48 @@ public class Combat {
      * will calculate how much damage your follower inflicts on the monster
      * @return damage to monster
      */
-    public int followerVmon(){
-        return 0;
+    public String followerVmon(){
+        String resp="";
+        int chance = (int)(Math.random()*99)+1;
+        if(chance>80){
+            int dmg = this.userATK *2;
+            this.monHP -= dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp="Your follower killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }
+        }else if((chance<80)&& (chance>20)){
+            int dmg = this.userATK;
+            this.monHP -= dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();  
+                resp="Your follower killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }
+        }else if(chance<20){
+            int dmg = this.userATK/2;
+            this.monHP -=dmg;
+            State.getAdvenurersCurrentRoom().getMonster().takeDMG(dmg);
+            if(this.monHP<1){
+                State.getAdvenurersCurrentRoom().removeMonster();
+                resp="Your follower killed the "+this.monName+" the loot is in your inventory \n";
+            }else{
+                resp= "The "+this.monName +" has "+this.monHP +"HP left \n";
+            }       
+        }
+        return resp;
     }
     
     public String magicVmon(){
         String resp ="You cast Firebolt \n";
+        if(State.getAdvenurersCurrentRoom().getMonster()==null){
+            return "the monster has already been killed by your follower";
+        }else{
         int random= (int)(Math.random()*1);
         if(random ==0){
             int dmg = (int)(this.monMaxHP*.5);
@@ -131,7 +187,7 @@ public class Combat {
             }else{
                 resp+= "The "+this.monName +" has "+this.monHP +"HP left \n";
             }     
-        }
+        }}
         return resp;    
     }
 }
