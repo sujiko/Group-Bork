@@ -35,7 +35,7 @@ public class GameState {
     private boolean danger = true;
     private boolean verbose = true;
     private ArrayList<Item> outOfGame = new ArrayList<Item>();
-    private Monster[] monsters= new Monster[5];
+    private Monster[] monsters = new Monster[5];
 
     private GameState() {
     }
@@ -62,7 +62,7 @@ public class GameState {
         genStrength();
         genMana();
         monInitialize();
-        
+
     }
 
     /**
@@ -177,8 +177,9 @@ public class GameState {
             writer.write("Bork V3.0\n");
             currentDungeon.storeState(writer);
             writer.write("Adventurer: \n");
-            writer.write("Initial Health:" + this.maxHealth +"\n");
-            writer.write("CurrentHealth:" + this.getHealth()+"\n");
+            writer.write("Initial Health:" + this.maxHealth + "\n");
+            writer.write("CurrentHealth:" + this.getHealth() + "\n");
+            writer.write("Players Zennys:" + this.getZennys() + "\n");
             writer.write("Current Room: " + onlyInstance.getAdvenurersCurrentRoom().getTitle() + "\n");
             String itemsInInventory = "";
             for (Item i : inventory) {
@@ -193,6 +194,12 @@ public class GameState {
             itemsOutOfGame = itemsOutOfGame.substring(0, itemsOutOfGame.length() - 1);
             writer.write("Items that no longer exist: " + itemsOutOfGame + "\n");
             writer.close();
+            writer.write("Shopkeepers inventory: ");
+            String shopkeeper = "";
+            for (Item i : Shopkeeper.Instance().getInventory()) {
+                shopkeeper += i.getPrimaryName() + ",";
+            }
+            writer.write(shopkeeper.substring(0, shopkeeper.length() - 1) + "\n");
         } catch (Exception e) {
 
         }
@@ -233,6 +240,9 @@ public class GameState {
             this.health = Integer.valueOf(split[1]);
             line = buffer.readLine();
             split = line.split(":");
+            this.playersZennys = Integer.valueOf(split[1]);
+            line = buffer.readLine();
+            split = line.split(":");
             line = split[1].trim();
             currentRoom = currentDungeon.getRoom(line);
             line = buffer.readLine();
@@ -250,7 +260,17 @@ public class GameState {
                 Event getRid = new DisappearEvent(this.getDungeon().getItem(i));
                 getRid.execute();
             }
-
+            line = buffer.readLine();
+            split = line.split(":");
+            line = split[1].trim();
+            String[] isselling = line.split(",");
+            for (Item i : Shopkeeper.Instance().getInventory()) {
+                for (String j : isselling) {
+                    if (!i.getPrimaryName().equals(j)) {
+                        Shopkeeper.Instance().removeItem(i);
+                    }
+                }
+            }
         } catch (Exception e) {
 
         }
@@ -290,11 +310,12 @@ public class GameState {
         this.maxHealth = Health;
         this.health = Health;
     }
+
     /**
      * this generates the characters initial strength.
      */
-    public void genStrength(){
-        this.strength = (int)(Math.random() * 20)+10;
+    public void genStrength() {
+        this.strength = (int) (Math.random() * 20) + 10;
     }
 
     /* 
@@ -321,10 +342,10 @@ public class GameState {
     *               the interget to be subtracted from the players health
      */
     public void addHealth(int i) {
-        if((this.health += i)<=this.maxHealth){
-        this.health += i;            
-        }else{
-            this.health=this.maxHealth;
+        if ((this.health += i) <= this.maxHealth) {
+            this.health += i;
+        } else {
+            this.health = this.maxHealth;
         }
 
     }
@@ -336,12 +357,13 @@ public class GameState {
      */
     public void minusHealth(int i) {
         this.health -= i;
-        if(this.health<=0){
-            this.running=false;
+        if (this.health <= 0) {
+            this.running = false;
             System.out.println("It would seem this action killed you.");
         }
     }
-    public int getStrength(){
+
+    public int getStrength() {
         return this.strength;
     }
 
@@ -353,19 +375,21 @@ public class GameState {
     public void isGone(Item i) {
         this.outOfGame.add(i);
     }
+
     /**
      * this helps get the monsters for a room.
+     *
      * @return monster array
      */
-    public Monster[] getMon(){
+    public Monster[] getMon() {
         return this.monsters;
     }
-    
+
     /**
-     *this initializes the monsters in the dungeon. 
-     * 
+     * this initializes the monsters in the dungeon.
+     *
      */
-    public void monInitialize(){  
+    public void monInitialize() {
         Monster hydra = new Monster("Hydra");
         Monster dragon = new Monster("dragon");
         dragon.setHostileF();
@@ -374,81 +398,98 @@ public class GameState {
         Monster shopkeeper = Shopkeeper.Instance();
         Monster Chimera = new Monster("Chimera");
         this.monsters = new Monster[6];
-        this.monsters[0]=hydra;
-        this.monsters[1]=Chimera;
-        this.monsters[2]=skeleton;
-        this.monsters[3]=basalisk;
-        this.monsters[4]=shopkeeper;
-        this.monsters[5]= dragon;
+        this.monsters[0] = hydra;
+        this.monsters[1] = Chimera;
+        this.monsters[2] = skeleton;
+        this.monsters[3] = basalisk;
+        this.monsters[4] = shopkeeper;
+        this.monsters[5] = dragon;
     }
+
     /**
      * this can change the danger for monster creations
      */
-    public void setDanger(){
-        if(this.danger==true){
-            this.danger=false;
-        }else{
-            this.danger=true;
+    public void setDanger() {
+        if (this.danger == true) {
+            this.danger = false;
+        } else {
+            this.danger = true;
         }
     }
+
     /**
      * evaluates danger and returns it
+     *
      * @return danger
      */
-    public boolean getDanger(){
+    public boolean getDanger() {
         return this.danger;
     }
-    public int getZennys(){
+
+    public int getZennys() {
         return this.playersZennys;
     }
+
     /**
      * generates the users mana for magic commands
      */
-    public void genMana(){
+    public void genMana() {
         int Mana = (int) (Math.random() * 20) + 10;
         this.mana = Mana;
         this.maxMana = Mana;
     }
+
     /**
      * @return max mana a person has
      */
-    public int getMaxMana(){ return this.maxMana;}
+    public int getMaxMana() {
+        return this.maxMana;
+    }
+
     /**
      * @return current manna
      */
-    public int getMana(){return this.mana;}
+    public int getMana() {
+        return this.mana;
+    }
+
     /**
      * recovers 25 of your total mana
      */
-    public void recoverMana(){
-        int recover = (int)(this.maxMana *.25);
+    public void recoverMana() {
+        int recover = (int) (this.maxMana * .25);
         this.mana += recover;
-        if(this.mana> this.maxMana){
-            this.mana= this.maxMana;
+        if (this.mana > this.maxMana) {
+            this.mana = this.maxMana;
         }
     }
+
     /**
      * takes away mana when you use magic
-     * @param use 
+     *
+     * @param use
      */
-    public void useMana(int use){
-        this.mana = this.mana -use;
+    public void useMana(int use) {
+        this.mana = this.mana - use;
     }
+
     /**
      * allows you to change verbose mode
      */
-    public void changeVerbose(){
-        if(this.verbose){
-            this.verbose=false;
-        }else{
-            this.verbose=true;
+    public void changeVerbose() {
+        if (this.verbose) {
+            this.verbose = false;
+        } else {
+            this.verbose = true;
         }
     }
+
     /**
      * allows you to get the boolean for verbose
-     * @return 
+     *
+     * @return
      */
-    public boolean getVerbose(){
+    public boolean getVerbose() {
         return this.verbose;
     }
 }

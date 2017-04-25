@@ -116,7 +116,7 @@ public class Room {
             fullDescription = this.desc + fullDescription;
             if (this.containsShop) {
                 fullDescription = fullDescription + "\n" + "You hear a booming voice echo through the room. \nIt declares, ' Welcome young "
-                        + "traveler to  " + Shopkeeper.Instance().getMonName() + "'s Shop!'";
+                        + "traveler to my Shop!'";
                 Random rng = new Random();
                 int seed = rng.nextInt();
                 Shopkeeper.Instance().getSelling(seed);
