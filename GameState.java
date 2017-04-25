@@ -428,7 +428,12 @@ public class GameState {
     public int getZennys() {
         return this.playersZennys;
     }
-
+    public void addZennys(int zen){
+        this.playersZennys += zen;
+    }
+    public void removeZenny(int zen){
+        this.playersZennys -= zen;
+    }
     /**
      * generates the users mana for magic commands
      */
