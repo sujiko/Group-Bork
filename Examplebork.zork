@@ -71,6 +71,10 @@ answerKey
 0
 LookAt:[die]You hear Stephen’s voice menacingly say,”Thats what happens to cheaters…” Everything fades to black around you.
 ---
+key
+5
+use:Maybe you could unlock something with this, if you knew how.
+---
 ===
 Rooms:
 Rotunda
@@ -81,7 +85,7 @@ Contents: DrPepper
 A long, white hallway stretches to the east and west. It is cold here, and you can detect the faint buzz of computers. A vending machine hums softly in the corner.
 ---
 Stephen's office
-Contents: StarWarsToy,WawaTravelMug,donut
+Contents: StarWarsToy,WawaTravelMug,donut,key
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
@@ -140,7 +144,7 @@ none
 Rotunda balcony
 s
 Underground Passage
-none
+key
 ---
 Underground Passage
 n
@@ -155,7 +159,7 @@ none
 Stephen's office
 n
 Underground Passage
-none
+key
 ---
 ===
 ShopKeeper:
