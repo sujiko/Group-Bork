@@ -32,7 +32,7 @@ public class Shopkeeper extends Monster {
      */
     Shopkeeper(String name) {
         super(name);
-        this.monName = name;
+        this.monName = "Shopkeeper";
     }
 
     public static synchronized Shopkeeper Instance() {
