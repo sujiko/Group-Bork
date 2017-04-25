@@ -70,7 +70,7 @@ public class Exit {
    }
    /**
    *gets the description that was set for an exit
-   *@return the string desccription
+   *@return the string description
    */
    public String getDescription(){
        return description;
@@ -105,20 +105,13 @@ public class Exit {
        return locked;
    }
    
-   /**
-    * unlocks exit
-    * @param keyItem
-    */
-   public void unlock(String keyItem)
+   public String getKeyItem()
    {
-      if(this.key.equals(keyItem))
-      {
-         this.locked = false;
-         System.out.println("The door unlocked!");
-      }
-      else
-      {
-         System.out.println("That didn't seem do do anything...");
-      }
+       return key;
+   }
+   
+   public void unlock()
+   {
+       this.locked = false;
    }
 }

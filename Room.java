@@ -345,5 +345,15 @@ public class Room {
     public Monster getMonster() {
         return this.monster;
     }
+    
+    /**
+     * this returns the exits for the unlock command
+     * 
+     * @return arraylist of exits
+     */
+    public ArrayList<Exit> getExits()
+    {
+        return this.exitsTo;
+    }
 
 }
