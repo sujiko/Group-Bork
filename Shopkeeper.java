@@ -80,6 +80,8 @@ public class Shopkeeper extends Monster {
 
     public void setRoom(String room) {
         this.currentRoom = GameState.Instance().getDungeon().getRoom(room);
+        GameState.Instance().getDungeon().getRoom(room).addShop();
+        GameState.Instance().getDungeon().getRoom(room).setMonster();
     }
 
     public Room getRoom() {

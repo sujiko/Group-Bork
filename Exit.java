@@ -29,6 +29,7 @@ public class Exit {
         try{
         String currentLine="";
         if(!currentLine.equals("===")){
+            buffer.reset();
             String starting= buffer.readLine();
             String direction= buffer.readLine();
             String destination=buffer.readLine();
