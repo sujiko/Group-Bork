@@ -83,11 +83,10 @@ public class Monster {
      * an arraylist of loot that will be dropped when the monsters health hits 0
      */
     public void getLoot(){
-        if (lootItems.isEmpty()){
-        }else
+        if (!lootItems.isEmpty()){
             for(Item item:lootItems){
             GameState.Instance().addToInventory(item);
-        }
+        }}
         GameState.Instance().addZennys((int)(Math.random()*this.maxHP));
     }
     
