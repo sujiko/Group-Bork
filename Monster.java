@@ -88,7 +88,7 @@ public class Monster {
             for(Item item:lootItems){
             GameState.Instance().addToInventory(item);
         }
-        
+        GameState.Instance().addZennys((int)(Math.random()*this.maxHP));
     }
     
     
