@@ -118,8 +118,11 @@ public class Shopkeeper extends Monster {
     }
 
     public String printSelling() {
-        return ("I'm selling:\n"+ selling.get(0).getPrimaryName() + ": " + toSellMessages.get(selling.get(0))+ "\n" + selling.get(1).getPrimaryName() + ": " + toSellMessages.get(selling.get(1))+"\n"
-                + selling.get(2).getPrimaryName() + ": " + toSellMessages.get(selling.get(2)) + "\n "+ selling.get(3).getPrimaryName() + ": " + toSellMessages.get(selling.get(3))+"\n");
+        return ("I'm selling:\n"+ selling.get(0).getPrimaryName() + ": " + toSellMessages.get(selling.get(0))+ " it costs "
+                + selling.get(0).getScore() +"\n" + selling.get(1).getPrimaryName() + ": " + toSellMessages.get(selling.get(1))+" it costs "
+                + selling.get(1).getScore() +"\n"
+                + selling.get(2).getPrimaryName() + ": " + toSellMessages.get(selling.get(2)) + " it costs "+ selling.get(2).getScore() 
+                + "\n "+ selling.get(3).getPrimaryName() + ": " + toSellMessages.get(selling.get(3))+ " it costs "+ selling.get(3).getScore() +"\n");
     }
 }
 

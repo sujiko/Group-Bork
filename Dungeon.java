@@ -101,7 +101,7 @@ public class Dungeon {
             currentLine = buffer.readLine();
             Room room= this.getRoom(currentLine.trim());
             room.addShop();
-            room.addMonster();
+            room.setMonster();
             Shopkeeper.Instance().setRoom(room);
             buffer.readLine();
             currentLine = buffer.readLine();
