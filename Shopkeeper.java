@@ -52,6 +52,7 @@ public class Shopkeeper extends Monster {
     public void removeItem(Item i) {
         toSell.remove(i);
         toSellMessages.remove(i);
+        selling.remove(i);
     }
 
     /**
@@ -139,7 +140,7 @@ public class Shopkeeper extends Monster {
         String sell = "I'm selling:\n";
         for (int i = 0; i < selling.size(); i++) {
             sell += selling.get(i).getPrimaryName() + ": " + toSellMessages.get(selling.get(i)) + " It costs "
-                    + selling.get(i).getScore() + "\n";
+                    + selling.get(i).getScore() + " Zennys"+ "\n";
         }
         return sell;
     }
