@@ -193,13 +193,13 @@ public class GameState {
             }
             itemsOutOfGame = itemsOutOfGame.substring(0, itemsOutOfGame.length() - 1);
             writer.write("Items that no longer exist: " + itemsOutOfGame + "\n");
-            writer.close();
             writer.write("Shopkeepers inventory: ");
             String shopkeeper = "";
             for (Item i : Shopkeeper.Instance().getInventory()) {
                 shopkeeper += i.getPrimaryName() + ",";
             }
             writer.write(shopkeeper.substring(0, shopkeeper.length() - 1) + "\n");
+            writer.close();
         } catch (Exception e) {
 
         }
