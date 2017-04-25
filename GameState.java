@@ -5,11 +5,13 @@
  */
 package GroupBork;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * this keeps track of the players gamestate in bork, it also handles reading in
@@ -182,23 +184,30 @@ public class GameState {
             writer.write("Players Zennys:" + this.getZennys() + "\n");
             writer.write("Current Room: " + onlyInstance.getAdvenurersCurrentRoom().getTitle() + "\n");
             String itemsInInventory = "";
+            if(!inventory.isEmpty()){
             for (Item i : inventory) {
                 itemsInInventory += i.getPrimaryName() + ",";
             }
             itemsInInventory = itemsInInventory.substring(0, itemsInInventory.length() - 1);
+            }
             writer.write("Inventory: " + itemsInInventory + "\n");
             String itemsOutOfGame = "";
-            for (Item j : outOfGame) {
-                itemsOutOfGame += j.getPrimaryName() + ",";
+            if (!outOfGame.isEmpty()) {
+                for (Item j : outOfGame) {
+                    itemsOutOfGame += j.getPrimaryName() + ",";
+                }
+                itemsOutOfGame = itemsOutOfGame.substring(0, itemsOutOfGame.length() - 1);
             }
-            itemsOutOfGame = itemsOutOfGame.substring(0, itemsOutOfGame.length() - 1);
             writer.write("Items that no longer exist: " + itemsOutOfGame + "\n");
             writer.write("Shopkeepers inventory: ");
-            String shopkeeper = "";
-            for (Item i : Shopkeeper.Instance().getInventory()) {
-                shopkeeper += i.getPrimaryName() + ",";
+            String shopsell = "";
+            if (!Shopkeeper.Instance().getInventory().isEmpty()) {
+                for (Item i : Shopkeeper.Instance().getInventory()) {
+                    shopsell += i.getPrimaryName() + ",";
+                }
+                shopsell = shopsell.substring(0, shopsell.length() - 1) + "\n";
             }
-            writer.write(shopkeeper.substring(0, shopkeeper.length() - 1) + "\n");
+            writer.write(shopsell);
             writer.close();
         } catch (Exception e) {
 
@@ -249,27 +258,36 @@ public class GameState {
             split = line.split(":");
             line = split[1].trim();
             String[] loadItems = line.split(",");
+            if(!loadItems[0].equals("")){
             for (String i : loadItems) {
                 inventory.add(currentDungeon.getItem(i));
+            }
             }
             line = buffer.readLine();
             split = line.split(":");
             line = split[1].trim();
             String[] destroyItems = line.split(",");
+            if(!destroyItems[0].equals("")){
             for (String i : destroyItems) {
                 Event getRid = new DisappearEvent(this.getDungeon().getItem(i));
                 getRid.execute();
+            }
             }
             line = buffer.readLine();
             split = line.split(":");
             line = split[1].trim();
             String[] isselling = line.split(",");
-            for (Item i : Shopkeeper.Instance().getInventory()) {
-                for (String j : isselling) {
-                    if (i.getPrimaryName().equals(j)) {
-                    }
+            if(!isselling[0].equals("")){
+            ArrayList<String> selling = new ArrayList<String>(Arrays.asList(isselling));
+            ArrayList<Item> inven= Shopkeeper.Instance().getInventory();
+            for (Item i :inven) {
+                String checkshopkeep= i.getPrimaryName();
+                if (selling.contains(i.getPrimaryName())) {
+
+                } else {
                     Shopkeeper.Instance().removeItem(i);
                 }
+            }
             }
         } catch (Exception e) {
 
@@ -428,12 +446,15 @@ public class GameState {
     public int getZennys() {
         return this.playersZennys;
     }
-    public void addZennys(int zen){
+
+    public void addZennys(int zen) {
         this.playersZennys += zen;
     }
-    public void removeZenny(int zen){
+
+    public void removeZenny(int zen) {
         this.playersZennys -= zen;
     }
+
     /**
      * generates the users mana for magic commands
      */

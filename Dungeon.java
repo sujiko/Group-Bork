@@ -172,14 +172,6 @@ public class Dungeon {
                 room.storeState(writer);
             }
             writer.write("===\n");
-            writer.write("ShopKeeper inventory:");
-            for (int i = 0; i < Shopkeeper.Instance().getInventory().size(); i++) {
-                if (i == Shopkeeper.Instance().getInventory().size() - 1) {
-                    writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName());
-                    break;
-                }
-                writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName() + ",");
-            }
         } catch (Exception e) {
 
         }
@@ -203,18 +195,6 @@ public class Dungeon {
                 room.restoreState(buffer, this);
                 line = buffer.readLine();
             }
-            /*
-            String line= buffer.readLine();
-            while(!line.equals("---")){
-            System.out.println(line);
-            String title= line.substring(0, line.length()-1);
-            System.out.println(title);
-            Room room= this.getRoom(title);
-            System.out.println(room.getTitle());
-            room.restoreState(buffer);
-            line=buffer.readLine();
-            }
-             */
         } catch (Exception e) {
             System.out.println("This is not formatted correctly!");
             System.exit(54);

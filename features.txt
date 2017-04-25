@@ -1,0 +1,24 @@
+Features:
+monsters: monsters will appear randomly in the rooms 
+that the player walks around in and will only attack the player
+if attacked.
+the play may attack the shopkeeper and dragon but the shopkeeper is a bit op
+and the killing the poor little dragon will make you lose the game
+monsters have an rng factor if you have a follower that attacks. 
+
+locked doors: players my come upon a locked door in the dungeon, to open it the player only needsa  key
+the door will always lock should the player leave the dungeon
+
+shopkeeper:
+the shop keeper and player can interact in two ways, either the player buys from the shopkeeper or the player tries to kill the 
+shopkeeper the shopkeeper is an op extra hard boss that is near impossible to win against, once attacked the shopkeeper will not forgive
+the player and will kill the player. he does not leave the rooms
+
+it costs Zennys to buy from the shopkeeper
+
+follower: follower follows the player around happily if active using the 
+follower specific item in the game. 
+the follower will always attack after you do and will gain health as you move rooms
+
+
+verbose: by typing verbose the player can toggle the verbose mode to display exits.

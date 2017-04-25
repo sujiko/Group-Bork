@@ -1,0 +1,220 @@
+﻿Mansion
+Bork v3.0
+===
+Items:
+mysterySoda
+10
+kick:The can skitters accross.
+shake:A liquid fizzes menacingly inside the can.
+drink[Transform(emptyCan),Wound(-1)]:Gulp, gulp -- that was GOOD!
+---
+emptyCan
+2
+kick:The empty can skitters accross the floor.
+drink:Sorry, all gone!
+stomp[Transform(squishedCan)]:The can crunches down into a thin disk, useful for recycling.
+---
+squishedCan
+2
+throw:Zing!
+stomp:Further stomping seems to have no effect.
+recycle[Score(5),Disappear]:Boo-ya, helped save the environment.
+---
+magicWand
+5
+break[Wound(10),Disappear]:The wand snaps in half. Strange magic fills the air, making you feel suddenly ill.
+wave[Score(5),Teleport]:An angelic form briefly appears, smiles, and just as quickly fades away.
+---
+donut
+7
+eat[Disappear,Wound(-2)]:You feel mildly guilt-ridden.
+stomp:The donut is now smooshed.
+---
+shotGun
+60
+---
+baseBallBat
+30
+play:Play Ball!
+---
+toyLightSaber
+90
+activate:It Glows and makes noises! SWOOSH!
+---
+StarWarsTee
+60
+examine:The Force is with you, you are one with the Force!
+---
+key
+5
+use:Maybe you could unlock something with this, if you knew how.
+---
+skullKey
+20
+use:You should try to unlock a door that matches the ornate style of this key.
+---
+DullRing
+50
+wear[transform(GlowingRing),follow]:You put on the ring and it starts to glow warmly, suddenly, a cute little ghost joins your adventure.
+---
+GlowingRing
+90
+remove[transform(DullRing),follow]:The Ghost looks sad and dissappates into the air.
+---
+raggedRobe
+5
+---
+oldPillow
+5
+---
+chalice
+15
+---
+goldSpoon
+10
+---
+magicSword
+20
+---
+vase
+5
+---
+===
+Rooms:
+Entry
+Contents:vase
+How did you get in here? This wide entry hall is richly furnished but covered in dust and old cobwebs. There is a door behind you, but it seems completely jammed shut. You'll have to find another way out. 
+---
+Hallway
+The only thing in this hall is dust, but it does lead several different places.
+---
+Side Room
+Contents:magicWand
+It seems like no one has been here in a long time. This might be a storage room, judging by the furniture draped in sheets and the boxes. Near the back of the room is a gaping hole in the floor. You think you could drop down into it without incident. Probably. It is awfully dark...
+---
+Bedroom
+Contents:mysterySoda,oldPillow
+Although similarly dusty, this bedroom doesn't seem particularly unusual. There's just normal bedroom things, long undisturbed.
+---
+Bathroom
+Contents:key
+The sink is dripping onto a metal key in the basin. That the little thing hasn't rusted is pretty impressive.
+---
+Basement
+Contents:raggedRobe
+It's darker down here, the ceiling is lower, and on the far wall is an imposing door with a huge metal look. A faint rustling noise comes from beyond it. 
+---
+Attic
+Contents: DullRing
+Boxes of unknown origin and hugely different sizes fill the small space. Items are spread out on top of one, and a robed figure sitting behind it becons you over.
+---
+Treasure Chamber
+Contents:chalice,goldSpoon,magicSword
+Woah! There's so much cool stuff in here!
+---
+Lair
+This place is even darker than the basement, and smells like burnt wood.
+---
+===
+Exits:
+Entry
+n
+Hallway
+none
+---
+Entry
+e
+Bathroom
+key
+---
+Hallway
+s
+Entry
+none
+---
+Hallway
+w
+Side Room
+none
+---
+Hallway
+u
+Attic
+none
+---
+Hallway
+d
+Basement
+none
+---
+Hallway
+e
+Bedroom
+none
+---
+Bedroom
+w
+Hallway
+none
+---
+Bedroom
+s
+Bathroom
+none
+---
+Bathroom
+n
+Bedroom
+none
+---
+Bathroom
+w
+Entry
+key
+---
+Side Room
+e
+Hallway
+none
+---
+Side Room
+d
+Basement
+none
+---
+Basement
+u
+Hallway
+none
+---
+Basement
+w
+Lair
+skullKey
+---
+Lair
+e
+Basement
+none
+---
+Attic
+d
+Hallway
+none
+---
+===
+ShopKeeper:
+Mr. E
+Attic
+Inventory:
+shotGun:Be careful with that young one!
+baseBallBat:Ahhh the game of baseball….
+toyLightSaber:ITS A REAL ONE OK GAME. 
+StarWarsTee:Oh! Thats my favorite!
+skullKey: No clue what this goes to!
+---
+===
+Dragon
+Lair
+---
+===
