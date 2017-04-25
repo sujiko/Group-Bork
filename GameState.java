@@ -266,9 +266,9 @@ public class GameState {
             String[] isselling = line.split(",");
             for (Item i : Shopkeeper.Instance().getInventory()) {
                 for (String j : isselling) {
-                    if (!i.getPrimaryName().equals(j)) {
-                        Shopkeeper.Instance().removeItem(i);
+                    if (i.getPrimaryName().equals(j)) {
                     }
+                    Shopkeeper.Instance().removeItem(i);
                 }
             }
         } catch (Exception e) {

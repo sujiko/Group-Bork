@@ -35,6 +35,7 @@ public class BuyCommand extends Command {
                 if (in.getZennys() >= Shopkeeper.Instance().price(i)) {
                     Shopkeeper.Instance().removeItem(i);
                     in.addToInventory(i);
+                    GameState.Instance().removeZenny(i.getScore());
                     return "Thanks for buying the " + itemName;
                 } else {
                     return "You don't have enough Zennys friendo!";
