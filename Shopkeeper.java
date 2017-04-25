@@ -20,7 +20,7 @@ public class Shopkeeper extends Monster {
     private ArrayList<Item> toSell = new ArrayList<Item>();
     public static String monName;
     private int life = 9001;
-    private int attkPWR;
+    private int attkPWR=(int) GameState.Instance().getMaxHealth()/2;
     boolean hostile = false;
     private static Shopkeeper onlyInstance;
     private ArrayList<Item> lootItems = new ArrayList<Item>();
@@ -127,7 +127,6 @@ public class Shopkeeper extends Monster {
     public ArrayList<Item> getInventory() {
         return this.toSell;
     }
-
     public void addToSelling(Item i) {
         this.selling.add(i);
     }
@@ -151,5 +150,13 @@ public class Shopkeeper extends Monster {
 
     public void died() {
         this.dead = true;
+    }
+    @Override
+    public void getLoot(){
+        if(!this.getInventory().isEmpty()){
+            for(Item item:this.getInventory()){
+            GameState.Instance().addToInventory(item);
+        }}
+        GameState.Instance().addZennys((int)(Math.random()*this.life));
     }
 }

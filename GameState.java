@@ -391,8 +391,7 @@ public class GameState {
      */
     public void monInitialize() {
         Monster hydra = new Monster("Hydra");
-        Monster dragon = new Monster("dragon");
-        dragon.setHostileF();
+        Monster dragon = Dragon.Instance();
         Monster skeleton = new Monster("Skeleton");
         Monster basalisk = new Monster("Basalisk");
         Monster shopkeeper = Shopkeeper.Instance();
@@ -429,7 +428,12 @@ public class GameState {
     public int getZennys() {
         return this.playersZennys;
     }
-
+    public void addZennys(int zen){
+        this.playersZennys += zen;
+    }
+    public void removeZenny(int zen){
+        this.playersZennys -= zen;
+    }
     /**
      * generates the users mana for magic commands
      */
