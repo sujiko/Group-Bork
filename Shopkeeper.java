@@ -20,7 +20,7 @@ public class Shopkeeper extends Monster {
     private ArrayList<Item> toSell = new ArrayList<Item>();
     public static String monName;
     private int life = 9001;
-    private int attkPWR;
+    private int attkPWR=(int) GameState.Instance().getMaxHealth()/2;
     boolean hostile = false;
     private static Shopkeeper onlyInstance;
     private ArrayList<Item> lootItems = new ArrayList<Item>();
