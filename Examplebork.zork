@@ -91,7 +91,7 @@ Rotunda balcony
 Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall. Columnar bannisters in ancient Grecian style stand between you and the precipice.
 ---
-Undeground Passage
+Underground Passage
 You find yourself in a menacing hallway, 
 you’re confused how walking straight will transport you vertically.
 ---
@@ -135,6 +135,26 @@ none
 Stephen's office
 e
 Basement hallway
+none
+---
+Rotunda balcony
+s
+Underground Passage
+none
+---
+Underground Passage
+n
+Rotunda balcony
+none
+---
+Underground Passage
+s
+Stephen's office
+none
+---
+Stephen's office
+n
+Underground Passage
 none
 ---
 ===
