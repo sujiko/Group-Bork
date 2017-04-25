@@ -29,6 +29,9 @@ public class MovementCommand extends Command {
             Shopkeeper.Instance().resetSelling();
             state.setAdventurersCurrentRoom(dest);
             state.recoverMana();
+            if(Follower.Instance().isFollowing==true){
+                Follower.Instance().recoverHP();
+            }
             state.getAdvenurersCurrentRoom().addMonster();
             if(state.getAdvenurersCurrentRoom().hasMonster()==true){
                 state.getAdvenurersCurrentRoom().getMonster().genLoot();
