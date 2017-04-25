@@ -26,6 +26,8 @@ public class Shopkeeper extends Monster {
     private ArrayList<Item> lootItems = new ArrayList<Item>();
     private Room currentRoom;
     private ArrayList<Item> selling = new ArrayList<Item>();
+    private boolean dead = false;
+
     /**
      *
      * @param name
@@ -61,8 +63,8 @@ public class Shopkeeper extends Monster {
         toSellMessages.put(i, m);
         toSell.add(i);
     }
-    
-    public String getName(){
+
+    public String getName() {
         return this.monName;
     }
 
@@ -85,7 +87,6 @@ public class Shopkeeper extends Monster {
     public Room getRoom() {
         return this.currentRoom;
     }
-    
 
     /**
      * this method will tell you everything the shopkeeper is currently selling.
@@ -95,14 +96,31 @@ public class Shopkeeper extends Monster {
      */
     public void getSelling(int currentInventorySeed) {
         Random rng = new Random(currentInventorySeed);
-        int itemOne = rng.nextInt(toSell.size());
-        addToSelling(toSell.get(itemOne));
-        int itemTwo = rng.nextInt(toSell.size());
-        addToSelling(toSell.get(itemTwo));
-        int itemThree = rng.nextInt(toSell.size());
-        addToSelling(toSell.get(itemThree));
-        int itemFour = rng.nextInt(toSell.size());
-        addToSelling(toSell.get(itemFour));
+        if (toSell.size() >= 1) {
+            int itemOne = rng.nextInt(toSell.size());
+            addToSelling(toSell.get(itemOne));
+            if (toSell.size() >= 2) {
+                int itemTwo = rng.nextInt(toSell.size());
+                while (itemTwo == itemOne) {
+                    itemTwo = rng.nextInt(toSell.size());
+                }
+                addToSelling(toSell.get(itemTwo));
+                if (toSell.size() >= 3) {
+                    int itemThree = rng.nextInt(toSell.size());
+                    while (itemTwo == itemThree || itemThree == itemOne) {
+                        itemThree = rng.nextInt(toSell.size());
+                    }
+                    addToSelling(toSell.get(itemThree));
+                    if (toSell.size() >= 4) {
+                        int itemFour = rng.nextInt(toSell.size());
+                        while (itemTwo == itemFour || itemFour == itemOne || itemThree == itemFour) {
+                            itemFour = rng.nextInt(toSell.size());
+                        }
+                        addToSelling(toSell.get(itemFour));
+                    }
+                }
+            }
+        }
     }
 
     public ArrayList<Item> getInventory() {
@@ -118,12 +136,19 @@ public class Shopkeeper extends Monster {
     }
 
     public String printSelling() {
-        String sell= "I'm selling:\n";
-        for(int i=0; i<selling.size();i++){
-           sell+=  selling.get(i).getPrimaryName() + ": " + toSellMessages.get(selling.get(i))+ " It costs "
-                + selling.get(i).getScore() +"\n";
+        String sell = "I'm selling:\n";
+        for (int i = 0; i < selling.size(); i++) {
+            sell += selling.get(i).getPrimaryName() + ": " + toSellMessages.get(selling.get(i)) + " It costs "
+                    + selling.get(i).getScore() + "\n";
         }
         return sell;
     }
-}
 
+    public boolean dead() {
+        return this.dead;
+    }
+
+    public void died() {
+        this.dead = true;
+    }
+}
