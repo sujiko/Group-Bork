@@ -78,8 +78,8 @@ public class Shopkeeper extends Monster {
         return price;
     }
 
-    public void setRoom(String room) {
-        this.currentRoom = GameState.Instance().getDungeon().getRoom(room);
+    public void setRoom(Room room) {
+        this.currentRoom = room;
     }
 
     public Room getRoom() {
@@ -117,11 +117,12 @@ public class Shopkeeper extends Monster {
         this.selling.clear();
     }
 
-    public void printSelling() {
-        System.out.println("I'm selling: ");
-        System.out.println(selling.get(0).getPrimaryName() + ": " + toSellMessages.get(selling.get(0)));
-        System.out.println(selling.get(1).getPrimaryName() + ": " + toSellMessages.get(selling.get(1)));
-        System.out.println(selling.get(2).getPrimaryName() + ": " + toSellMessages.get(selling.get(2)));
-        System.out.println(selling.get(3).getPrimaryName() + ": " + toSellMessages.get(selling.get(3)));
+    public String printSelling() {
+        return ("I'm selling:\n"+ selling.get(0).getPrimaryName() + ": " + toSellMessages.get(selling.get(0))+ " it costs "
+                + selling.get(0).getScore() +"\n" + selling.get(1).getPrimaryName() + ": " + toSellMessages.get(selling.get(1))+" it costs "
+                + selling.get(1).getScore() +"\n"
+                + selling.get(2).getPrimaryName() + ": " + toSellMessages.get(selling.get(2)) + " it costs "+ selling.get(2).getScore() 
+                + "\n "+ selling.get(3).getPrimaryName() + ": " + toSellMessages.get(selling.get(3))+ " it costs "+ selling.get(3).getScore() +"\n");
     }
 }
+

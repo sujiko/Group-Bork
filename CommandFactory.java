@@ -60,6 +60,9 @@ public class CommandFactory {
             case "take":
                 toDo= new TakeCommand(actedUpon);
                 break;
+            case "selling":
+                toDo=new SellingCommand();
+                break;
             case "drop":
                 toDo= new DropCommand(actedUpon);
                 break;

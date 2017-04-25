@@ -76,24 +76,24 @@ Rooms:
 Rotunda
 You are in a beautiful round entry chamber, with tall white pillars that seemingly reach to the skies. There is an elevator here.
 ---
+Basement hallway
+Contents: DrPepper
+A long, white hallway stretches to the east and west. It is cold here, and you can detect the faint buzz of computers. A vending machine hums softly in the corner.
+---
 Stephen's office
 Contents: StarWarsToy,WawaTravelMug,donut
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
-Contents:followerItem
 Sunlight streams through tall windows and illuminates a brilliant classroom.
 ---
 Rotunda balcony
 Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall. Columnar bannisters in ancient Grecian style stand between you and the precipice.
 ---
-Undeground passage
-You find yourself in a menacing hallway, you’re confused how walking straight will transport you vertically.
----
-Basement hallway
-Contents: DrPepper
-A long, white hallway stretches to the east and west. It is cold here, and you can detect the faint buzz of computers. A vending machine hums softly in the corner.
+Underground Passage
+You find yourself in a menacing hallway, 
+you’re confused how walking straight will transport you vertically.
 ---
 ===
 Exits:
@@ -139,22 +139,22 @@ none
 ---
 Rotunda balcony
 s
-Undeground passage
+Underground Passage
 none
 ---
-Undeground passage
-n 
+Underground Passage
+n
 Rotunda balcony
 none
 ---
-Stephen’s office
-n
-Undeground passage
-none
----
-Undeground passage
+Underground Passage
 s
 Stephen's office
+none
+---
+Stephen's office
+n
+Underground Passage
 none
 ---
 ===

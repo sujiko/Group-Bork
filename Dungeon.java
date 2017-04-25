@@ -73,11 +73,11 @@ public class Dungeon {
         try {
             String currentLine = "";
             buffer.mark(1);
-          while (!currentLine.equals("===")) {
+            while (!currentLine.equals("===")) {
                 Room roomToAdd = new Room(buffer, this, initState);
                 this.add(roomToAdd);
                 buffer.mark(1);
-                currentLine=buffer.readLine();
+                currentLine = buffer.readLine();
             }
             //buffer.readLine();
         } catch (Exception e) {
@@ -85,27 +85,30 @@ public class Dungeon {
         }
         try {
             String currentLine = buffer.readLine();
+            buffer.mark(1);
             while (!currentLine.equals("===")) {
                 Exit toAdd = new Exit(buffer, this);
+                buffer.readLine();
+                buffer.mark(1);
                 currentLine = buffer.readLine();
             }
         } catch (Exception e) {
         }
         try {
             buffer.readLine();
-        } catch (Exception e) {
-            System.out.println("Warning: this file doesn't have a shop.");
-        }
-        try {
             String currentLine = buffer.readLine();
             Shopkeeper shop = new Shopkeeper(currentLine);
             currentLine = buffer.readLine();
-            Shopkeeper.Instance().setRoom(currentLine);
+            Room room= this.getRoom(currentLine.trim());
+            room.addShop();
+            room.setMonster();
+            Shopkeeper.Instance().setRoom(room);
             buffer.readLine();
-            currentLine= buffer.readLine();
-            while(!currentLine.equals("---")){
-                String[] split=currentLine.split(":");
+            currentLine = buffer.readLine();
+            while (!currentLine.equals("---")) {
+                String[] split = currentLine.split(":");
                 Shopkeeper.Instance().addItem(this.getItem(split[0]), split[1]);
+                currentLine=buffer.readLine();
             }
         } catch (Exception e) {
             
@@ -170,12 +173,12 @@ public class Dungeon {
             }
             writer.write("===\n");
             writer.write("ShopKeeper inventory:");
-            for ( int i= 0 ; i< Shopkeeper.Instance().getInventory().size(); i++){
-                if (i== Shopkeeper.Instance().getInventory().size()-1){
+            for (int i = 0; i < Shopkeeper.Instance().getInventory().size(); i++) {
+                if (i == Shopkeeper.Instance().getInventory().size() - 1) {
                     writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName());
                     break;
                 }
-                writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName()+",");
+                writer.write(Shopkeeper.Instance().getInventory().get(i).getPrimaryName() + ",");
             }
         } catch (Exception e) {
 
