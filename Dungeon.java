@@ -110,6 +110,9 @@ public class Dungeon {
                 Shopkeeper.Instance().addItem(this.getItem(split[0]), split[1]);
                 currentLine=buffer.readLine();
             }
+            buffer.readLine();
+            currentLine= buffer.readLine();
+            Dragon.Instance().setRoom(this.getRoom(buffer.readLine()));
         } catch (Exception e) {
             
         }
